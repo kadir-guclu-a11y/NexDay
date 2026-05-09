@@ -1,2 +1,570 @@
-# NexDay
-NexDay Homepage
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexDay</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left,#1d4ed8 0%,transparent 35%),
+radial-gradient(circle at bottom right,#14b8a6 0%,transparent 35%),
+radial-gradient(circle at center,#6d28d9 0%,transparent 40%);
+opacity:.45;
+z-index:-1;
+}
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:1200px;
+padding:18px 28px;
+border-radius:999px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.08);
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:100;
+}
+
+nav h2{
+font-size:28px;
+font-weight:800;
+}
+
+nav ul{
+display:flex;
+gap:24px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:#dbe4ff;
+font-size:15px;
+}
+
+.hero{
+min-height:100vh;
+padding:140px 8% 80px;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:60px;
+}
+
+.hero h1{
+font-size:clamp(60px,8vw,110px);
+line-height:.9;
+letter-spacing:-4px;
+margin-bottom:24px;
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,#fff,#60a5fa,#5eead4);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+font-size:22px;
+line-height:1.6;
+color:#b8c4e0;
+max-width:620px;
+margin-bottom:34px;
+}
+
+.buttons{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:16px 28px;
+border-radius:999px;
+font-weight:700;
+text-decoration:none;
+transition:.3s;
+}
+
+.primary{
+background:white;
+color:black;
+}
+
+.secondary{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.1);
+color:white;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+.phone-area{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:700px;
+}
+
+.phone{
+position:absolute;
+width:320px;
+border-radius:42px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 30px 90px rgba(0,0,0,.5);
+}
+
+.phone img{
+width:100%;
+display:block;
+}
+
+.phone.left{
+width:220px;
+left:0;
+transform:rotate(-12deg);
+opacity:.85;
+}
+
+.phone.right{
+width:220px;
+right:0;
+transform:rotate(12deg);
+opacity:.85;
+}
+
+.section{
+padding:120px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:70px;
+}
+
+.section-title h2{
+font-size:clamp(42px,6vw,80px);
+letter-spacing:-3px;
+margin-bottom:20px;
+}
+
+.section-title p{
+font-size:22px;
+color:#aeb9d6;
+max-width:700px;
+margin:auto;
+line-height:1.6;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.card{
+padding:34px;
+border-radius:34px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(16px);
+}
+
+.card h3{
+font-size:30px;
+margin:22px 0 14px;
+}
+
+.card p{
+color:#b8c4e0;
+line-height:1.7;
+}
+
+.icon{
+font-size:42px;
+}
+
+.showcase{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+}
+
+.big{
+min-height:580px;
+padding:40px;
+border-radius:42px;
+position:relative;
+overflow:hidden;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.big h3{
+font-size:52px;
+line-height:1;
+margin-bottom:20px;
+letter-spacing:-2px;
+}
+
+.big p{
+font-size:20px;
+color:#c7d1eb;
+max-width:420px;
+line-height:1.6;
+}
+
+.big img{
+position:absolute;
+bottom:-60px;
+left:50%;
+transform:translateX(-50%);
+width:280px;
+border-radius:38px;
+box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:22px;
+}
+
+.gallery img{
+width:100%;
+border-radius:34px;
+box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.cta{
+margin:80px 8%;
+padding:100px 30px;
+border-radius:50px;
+background:white;
+color:black;
+text-align:center;
+}
+
+.cta h2{
+font-size:clamp(50px,7vw,90px);
+line-height:.95;
+letter-spacing:-4px;
+margin-bottom:20px;
+}
+
+.cta p{
+font-size:22px;
+color:#555;
+margin-bottom:34px;
+}
+
+.store-buttons{
+display:flex;
+justify-content:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.store{
+background:black;
+color:white;
+padding:16px 22px;
+border-radius:18px;
+min-width:180px;
+text-align:left;
+}
+
+.store small{
+display:block;
+opacity:.7;
+font-size:12px;
+}
+
+.store strong{
+font-size:22px;
+}
+
+footer{
+padding:40px 8%;
+display:flex;
+justify-content:space-between;
+color:#9aa7c7;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+@media(max-width:1000px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero p{
+margin:auto auto 34px;
+}
+
+.buttons{
+justify-content:center;
+}
+
+.features{
+grid-template-columns:repeat(2,1fr);
+}
+
+.showcase{
+grid-template-columns:1fr;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:700px){
+
+nav ul{
+display:none;
+}
+
+.hero{
+padding:130px 24px 60px;
+}
+
+.section{
+padding:80px 24px;
+}
+
+.features{
+grid-template-columns:1fr;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.phone-area{
+min-height:500px;
+}
+
+.phone{
+width:260px;
+}
+
+.phone.left,
+.phone.right{
+width:150px;
+}
+
+.big{
+min-height:520px;
+}
+
+.big img{
+width:220px;
+}
+
+footer{
+flex-direction:column;
+gap:10px;
+padding:30px 24px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>NexDay</h2>
+
+<ul>
+<li><a href="#">Features</a></li>
+<li><a href="#">App</a></li>
+<li><a href="#">Download</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<div>
+<h1>Dein Alltag.<br><span>Neu organisiert.</span></h1>
+
+<p>
+NexDay verbindet Aufgaben, Kalender,
+Einkauf und Alltagstools in einer modernen
+All-in-One App.
+</p>
+
+<div class="buttons">
+<a href="#" class="btn primary">Jetzt starten</a>
+<a href="#" class="btn secondary">App ansehen</a>
+</div>
+</div>
+
+<div class="phone-area">
+
+<div class="phone left">
+<img src="DEIN_BILD_1">
+</div>
+
+<div class="phone">
+<img src="DEIN_BILD_2">
+</div>
+
+<div class="phone right">
+<img src="DEIN_BILD_3">
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="section-title">
+<h2>Alles für deinen Tag.</h2>
+
+<p>
+Eine App für Aufgaben, Kalender,
+Einkauf und Organisation.
+</p>
+</div>
+
+<div class="features">
+
+<div class="card">
+<div class="icon">✅</div>
+<h3>Aufgaben</h3>
+<p>Plane To-dos und behalte deinen Fortschritt im Blick.</p>
+</div>
+
+<div class="card">
+<div class="icon">📅</div>
+<h3>Kalender</h3>
+<p>Alle Termine und Tage übersichtlich an einem Ort.</p>
+</div>
+
+<div class="card">
+<div class="icon">🛒</div>
+<h3>NexShop</h3>
+<p>Moderne Einkaufslisten mit Kategorien und Produkten.</p>
+</div>
+
+<div class="card">
+<div class="icon">⏱️</div>
+<h3>Tools</h3>
+<p>Timer, Wecker und Schnellzugriffe direkt integriert.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="showcase">
+
+<div class="big">
+<h3>Organisiere smarter.</h3>
+
+<p>
+Mehr Übersicht. Weniger Chaos.
+Alles an einem Ort.
+</p>
+
+<img src="DEIN_BILD_4">
+</div>
+
+<div class="big">
+<h3>Einkaufen einfacher.</h3>
+
+<p>
+Mit NexShop planst du Produkte,
+Mengen und Listen schneller.
+</p>
+
+<img src="DEIN_BILD_5">
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="section-title">
+<h2>Moderne App Experience.</h2>
+</div>
+
+<div class="gallery">
+
+<img src="DEIN_BILD_1">
+<img src="DEIN_BILD_2">
+<img src="DEIN_BILD_3">
+<img src="DEIN_BILD_4">
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>Bereit für deinen nächsten Tag?</h2>
+
+<p>
+NexDay bringt Ruhe, Übersicht und Organisation in deinen Alltag.
+</p>
+
+<div class="store-buttons">
+
+<div class="store">
+<small>Laden im</small>
+<strong>App Store</strong>
+</div>
+
+<div class="store">
+<small>Jetzt bei</small>
+<strong>Google Play</strong>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<strong>NexDay</strong>
+<span>© 2026 NexDay</span>
+</footer>
+
+</body>
+</html>
