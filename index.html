@@ -15,6 +15,10 @@ box-sizing:border-box;
 font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 background:#000;
 color:white;
@@ -46,113 +50,128 @@ background-size:40px 40px;
 z-index:-1;
 }
 
-/* NAV */
+/* NAVBAR */
 
 nav{
 position:fixed;
 top:0;
+left:0;
 width:100%;
-padding:20px;
+padding:22px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+background:rgba(0,0,0,0.25);
 backdrop-filter:blur(20px);
-background:rgba(0,0,0,0.3);
 border-bottom:1px solid rgba(255,255,255,0.08);
-z-index:100;
+z-index:1000;
 }
 
 .logo{
 font-size:52px;
-font-weight:800;
+font-weight:900;
 }
 
 .logo span{
-background:linear-gradient(90deg,#ff8800,#00e5ff);
+background:linear-gradient(90deg,#ff8800,#00e1ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 .badge{
 padding:16px 34px;
-border-radius:40px;
-background:linear-gradient(90deg,#ff8800,#00d9ff);
+border-radius:999px;
 font-weight:700;
+font-size:18px;
+background:linear-gradient(90deg,#ff8800,#00d9ff);
+box-shadow:0 0 30px rgba(0,225,255,0.3);
 }
 
 /* HERO */
 
 .hero{
-padding-top:220px;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-padding-left:20px;
-padding-right:20px;
+padding:160px 20px 120px;
 }
 
 .hero h1{
-font-size:90px;
-line-height:1;
+font-size:96px;
+line-height:0.95;
 font-weight:900;
 margin-bottom:30px;
 }
 
 .gradient{
-background:linear-gradient(90deg,#fff,#00e1ff);
+background:linear-gradient(90deg,#ffffff,#00e1ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 .hero p{
 font-size:28px;
-color:rgba(255,255,255,0.7);
 max-width:900px;
-margin:auto;
 line-height:1.5;
+color:rgba(255,255,255,0.72);
 }
 
 .buttons{
-margin-top:50px;
 display:flex;
-gap:20px;
-justify-content:center;
+gap:22px;
 flex-wrap:wrap;
+justify-content:center;
+margin-top:50px;
 }
 
 .btn{
-padding:22px 50px;
-border-radius:60px;
+padding:22px 46px;
+border-radius:999px;
+text-decoration:none;
 font-size:22px;
 font-weight:700;
-text-decoration:none;
 transition:0.4s;
 }
 
 .primary{
-background:linear-gradient(90deg,#ff8800,#00e5ff);
+background:linear-gradient(90deg,#ff8800,#00e1ff);
 color:white;
-box-shadow:0 0 40px rgba(0,225,255,0.4);
+box-shadow:0 0 40px rgba(0,225,255,0.35);
+}
+
+.primary:hover{
+transform:scale(1.05);
 }
 
 .secondary{
-border:1px solid rgba(255,255,255,0.15);
 background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
 backdrop-filter:blur(20px);
 color:white;
+}
+
+.secondary:hover{
+transform:scale(1.05);
+background:rgba(255,255,255,0.08);
 }
 
 /* PHONE */
 
 .phone{
-width:340px;
-border-radius:45px;
-margin:auto;
+width:360px;
+margin-top:90px;
+border-radius:48px;
 overflow:hidden;
 border:1px solid rgba(255,255,255,0.12);
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(20px);
-box-shadow:0 0 80px rgba(0,0,0,0.7);
-transform:translateY(80px);
-transition:1s;
+box-shadow:
+0 0 80px rgba(0,0,0,0.8),
+0 0 40px rgba(0,225,255,0.15);
+animation:float 6s ease-in-out infinite;
 }
 
 .phone img{
@@ -160,34 +179,41 @@ width:100%;
 display:block;
 }
 
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-18px);}
+100%{transform:translateY(0px);}
+}
+
 /* SECTIONS */
 
 .section{
-padding:220px 20px;
+padding:180px 20px;
 text-align:center;
 }
 
 .section h2{
-font-size:70px;
-margin-bottom:20px;
+font-size:74px;
+margin-bottom:24px;
+font-weight:900;
 }
 
 .section p{
 font-size:24px;
+line-height:1.7;
 max-width:900px;
 margin:auto;
-line-height:1.6;
-color:rgba(255,255,255,0.7);
+color:rgba(255,255,255,0.72);
 }
 
 /* CARDS */
 
 .cards{
-margin-top:80px;
+margin-top:90px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:40px;
-max-width:1400px;
+max-width:1450px;
 margin-left:auto;
 margin-right:auto;
 }
@@ -195,14 +221,16 @@ margin-right:auto;
 .card{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
-backdrop-filter:blur(20px);
-border-radius:40px;
+border-radius:42px;
 overflow:hidden;
-transition:0.5s;
+backdrop-filter:blur(20px);
+transition:0.45s;
+box-shadow:0 0 40px rgba(0,0,0,0.35);
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.02);
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 0 60px rgba(0,225,255,0.15);
 }
 
 .card img{
@@ -211,17 +239,17 @@ display:block;
 }
 
 .card-content{
-padding:35px;
+padding:34px;
 text-align:left;
 }
 
 .card h3{
-font-size:34px;
-margin-bottom:14px;
+font-size:36px;
+margin-bottom:12px;
 }
 
 .card p{
-font-size:19px;
+font-size:20px;
 line-height:1.6;
 color:rgba(255,255,255,0.7);
 }
@@ -229,40 +257,63 @@ color:rgba(255,255,255,0.7);
 /* FOOTER */
 
 footer{
-padding:120px 20px;
+padding:140px 20px;
 text-align:center;
 border-top:1px solid rgba(255,255,255,0.08);
 }
 
 footer h2{
-font-size:70px;
+font-size:74px;
 margin-bottom:20px;
 }
 
 footer p{
 font-size:24px;
+margin-bottom:50px;
 color:rgba(255,255,255,0.7);
-margin-bottom:40px;
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
+.logo{
+font-size:42px;
+}
+
+.badge{
+padding:14px 24px;
+font-size:15px;
+}
+
+.hero{
+padding-top:160px;
+}
+
 .hero h1{
 font-size:58px;
+}
+
+.hero p{
+font-size:20px;
 }
 
 .section h2{
 font-size:48px;
 }
 
-.logo{
-font-size:42px;
+.section p{
+font-size:20px;
 }
 
 .phone{
-width:88%;
+width:90%;
+}
+
+.btn{
+width:100%;
+max-width:380px;
+font-size:20px;
 }
 
 }
@@ -289,8 +340,8 @@ Plan smarter.<br>
 
 <p>
 Die moderne All-in-One App für Aufgaben,
-Kalender, Einkauf & Kochmodus.
-Minimalistisch. Intelligent. Beautiful.
+Kalender, Einkauf & Kochmodus —
+minimalistisch, intelligent und wunderschön designed.
 </p>
 
 <div class="buttons">
@@ -298,8 +349,9 @@ Minimalistisch. Intelligent. Beautiful.
 <a href="#" class="btn secondary">Bald im App Store</a>
 </div>
 
+<!-- HOME IMAGE -->
 <div class="phone">
-<img src="IMG_0909.png">
+<img src="IMG_0913.png">
 </div>
 
 </section>
@@ -311,51 +363,57 @@ Minimalistisch. Intelligent. Beautiful.
 <p>
 NexDay verbindet Produktivität,
 Kalender, Einkauf und smarte Routinen
-in einer wunderschönen Apple-inspirierten Oberfläche.
+in einer futuristischen Apple-inspirierten Oberfläche.
 </p>
 
 <div class="cards">
 
+<!-- AUFGABEN -->
 <div class="card">
-<img src="IMG_0910.png">
+<img src="IMG_0909.png">
 <div class="card-content">
 <h3>Aufgaben</h3>
 <p>
-Behalte deinen Tagesfortschritt im Blick
-mit ultraflüssigen Animationen und smarter Organisation.
+Verfolge deinen Tagesfortschritt,
+organisiere Aufgaben elegant
+und bleibe jederzeit fokussiert.
 </p>
 </div>
 </div>
 
+<!-- KALENDER -->
 <div class="card">
-<img src="IMG_0913.png">
+<img src="IMG_0910.png">
 <div class="card-content">
 <h3>Kalender</h3>
 <p>
-Elegante Monatsansicht mit Fokus auf Klarheit,
-Geschwindigkeit und Übersicht.
+Moderne Monatsansicht mit Fokus auf Übersicht,
+Geschwindigkeit und wunderschöne Animationen.
 </p>
 </div>
 </div>
 
+<!-- SHOP -->
 <div class="card">
 <img src="IMG_0911.png">
 <div class="card-content">
 <h3>NexShop</h3>
 <p>
-Deine intelligente Einkaufsliste mit Kategorien,
-Gerichten und automatischer Planung.
+Intelligente Einkaufslisten,
+Gerichte und smarte Planung
+in einem eleganten Erlebnis.
 </p>
 </div>
 </div>
 
+<!-- KOCHMODUS -->
 <div class="card">
 <img src="IMG_0912.png">
 <div class="card-content">
 <h3>Kochmodus</h3>
 <p>
-Schritt-für-Schritt Kochen mit eingebautem Timer
-und wunderschönem Fokus-Modus.
+Schritt-für-Schritt Kochen mit Fokusmodus,
+Timer und ultraklarem Interface.
 </p>
 </div>
 </div>
