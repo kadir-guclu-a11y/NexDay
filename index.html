@@ -2,12 +2,9 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>NexDay</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,176 +12,197 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 body{
-font-family:'Inter',sans-serif;
-background:black;
+background:#000;
 color:white;
 overflow-x:hidden;
 }
 
-body::before{
-content:'';
+/* BACKGROUND */
+
+.bg{
 position:fixed;
 width:100%;
 height:100%;
 background:
 radial-gradient(circle at top left,#ff7b00 0%,transparent 30%),
-radial-gradient(circle at top right,#00e1ff 0%,transparent 35%),
-radial-gradient(circle at bottom center,#6f00ff 0%,transparent 35%);
-opacity:.35;
+radial-gradient(circle at top right,#00e1ff 0%,transparent 30%),
+radial-gradient(circle at bottom,#5f00ff 0%,transparent 30%),
+#000;
 z-index:-2;
 }
 
-body::after{
-content:'';
+.grid{
 position:fixed;
 width:100%;
 height:100%;
 background-image:
-linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
 background-size:40px 40px;
 z-index:-1;
 }
 
+/* NAV */
+
 nav{
 position:fixed;
 top:0;
-left:0;
 width:100%;
-padding:20px 25px;
+padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 backdrop-filter:blur(20px);
-background:rgba(0,0,0,.25);
-z-index:999;
+background:rgba(0,0,0,0.3);
+border-bottom:1px solid rgba(255,255,255,0.08);
+z-index:100;
 }
 
 .logo{
-font-size:38px;
+font-size:52px;
 font-weight:800;
 }
 
 .logo span{
-background:linear-gradient(90deg,#ff7b00,#00e1ff);
+background:linear-gradient(90deg,#ff8800,#00e5ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-.nav-btn{
-padding:14px 30px;
-border-radius:999px;
-border:none;
-font-size:18px;
+.badge{
+padding:16px 34px;
+border-radius:40px;
+background:linear-gradient(90deg,#ff8800,#00d9ff);
 font-weight:700;
-color:white;
-background:linear-gradient(90deg,#ff7b00,#00e1ff);
-box-shadow:0 0 40px rgba(0,225,255,.3);
 }
 
+/* HERO */
+
 .hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+padding-top:220px;
 text-align:center;
-padding:120px 20px 60px;
+padding-left:20px;
+padding-right:20px;
 }
 
 .hero h1{
-font-size:72px;
-font-weight:800;
-line-height:1.1;
-max-width:900px;
+font-size:90px;
+line-height:1;
+font-weight:900;
+margin-bottom:30px;
 }
 
 .gradient{
-background:linear-gradient(90deg,#ff7b00,#00e1ff,#a855f7);
+background:linear-gradient(90deg,#fff,#00e1ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 .hero p{
-margin-top:25px;
-font-size:24px;
-opacity:.8;
-max-width:750px;
-line-height:1.6;
+font-size:28px;
+color:rgba(255,255,255,0.7);
+max-width:900px;
+margin:auto;
+line-height:1.5;
 }
 
-.cta{
-margin-top:40px;
+.buttons{
+margin-top:50px;
 display:flex;
 gap:20px;
-flex-wrap:wrap;
 justify-content:center;
+flex-wrap:wrap;
 }
 
 .btn{
-padding:18px 34px;
-border-radius:999px;
-font-size:20px;
+padding:22px 50px;
+border-radius:60px;
+font-size:22px;
 font-weight:700;
 text-decoration:none;
-transition:.3s;
+transition:0.4s;
 }
 
-.btn-primary{
-background:linear-gradient(90deg,#ff7b00,#00e1ff);
+.primary{
+background:linear-gradient(90deg,#ff8800,#00e5ff);
 color:white;
-box-shadow:0 0 40px rgba(0,225,255,.3);
+box-shadow:0 0 40px rgba(0,225,255,0.4);
 }
 
-.btn-secondary{
-border:1px solid rgba(255,255,255,.15);
-background:rgba(255,255,255,.05);
+.secondary{
+border:1px solid rgba(255,255,255,0.15);
+background:rgba(255,255,255,0.05);
 backdrop-filter:blur(20px);
 color:white;
 }
 
-.showcase{
-padding:80px 20px 140px;
-max-width:1400px;
+/* PHONE */
+
+.phone{
+width:340px;
+border-radius:45px;
 margin:auto;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.12);
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+box-shadow:0 0 80px rgba(0,0,0,0.7);
+transform:translateY(80px);
+transition:1s;
 }
 
-.section-title{
-font-size:54px;
-font-weight:800;
+.phone img{
+width:100%;
+display:block;
+}
+
+/* SECTIONS */
+
+.section{
+padding:220px 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:70px;
 margin-bottom:20px;
-text-align:center;
 }
 
-.section-sub{
-text-align:center;
-opacity:.7;
-font-size:22px;
-margin-bottom:80px;
+.section p{
+font-size:24px;
+max-width:900px;
+margin:auto;
+line-height:1.6;
+color:rgba(255,255,255,0.7);
 }
 
-.grid{
+/* CARDS */
+
+.cards{
+margin-top:80px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:35px;
+gap:40px;
+max-width:1400px;
+margin-left:auto;
+margin-right:auto;
 }
 
 .card{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
 border-radius:40px;
 overflow:hidden;
-backdrop-filter:blur(30px);
-transition:.5s;
-position:relative;
+transition:0.5s;
 }
 
 .card:hover{
-transform:translateY(-12px) scale(1.02);
-box-shadow:0 20px 60px rgba(0,0,0,.4);
+transform:translateY(-10px) scale(1.02);
 }
 
 .card img{
@@ -193,43 +211,58 @@ display:block;
 }
 
 .card-content{
-padding:28px;
+padding:35px;
+text-align:left;
 }
 
-.card-content h3{
+.card h3{
 font-size:34px;
-margin-bottom:10px;
+margin-bottom:14px;
 }
 
-.card-content p{
-opacity:.75;
-font-size:18px;
+.card p{
+font-size:19px;
 line-height:1.6;
+color:rgba(255,255,255,0.7);
 }
+
+/* FOOTER */
 
 footer{
-padding:80px 20px;
+padding:120px 20px;
 text-align:center;
-opacity:.5;
-font-size:15px;
+border-top:1px solid rgba(255,255,255,0.08);
 }
+
+footer h2{
+font-size:70px;
+margin-bottom:20px;
+}
+
+footer p{
+font-size:24px;
+color:rgba(255,255,255,0.7);
+margin-bottom:40px;
+}
+
+/* MOBILE */
 
 @media(max-width:768px){
 
 .hero h1{
-font-size:52px;
+font-size:58px;
 }
 
-.hero p{
-font-size:20px;
-}
-
-.section-title{
-font-size:42px;
+.section h2{
+font-size:48px;
 }
 
 .logo{
-font-size:28px;
+font-size:42px;
+}
+
+.phone{
+width:88%;
 }
 
 }
@@ -239,104 +272,90 @@ font-size:28px;
 
 <body>
 
+<div class="bg"></div>
+<div class="grid"></div>
+
 <nav>
 <div class="logo">Nex<span>Day</span></div>
-
-<button class="nav-btn">
-Coming Soon
-</button>
+<div class="badge">Coming Soon</div>
 </nav>
 
 <section class="hero">
 
 <h1>
-Plane smarter.<br>
+Plan smarter.<br>
 <span class="gradient">Live clearer.</span>
 </h1>
 
 <p>
-NexDay kombiniert Aufgaben, Kalender,
-Einkauf und Kochmodus in einer einzigen
-Premium Experience.
+Die moderne All-in-One App für Aufgaben,
+Kalender, Einkauf & Kochmodus.
+Minimalistisch. Intelligent. Beautiful.
 </p>
 
-<div class="cta">
+<div class="buttons">
+<a href="#" class="btn primary">App entdecken</a>
+<a href="#" class="btn secondary">Bald im App Store</a>
+</div>
 
-<a href="#" class="btn btn-primary">
-App entdecken
-</a>
-
-<a href="#" class="btn btn-secondary">
-Bald im App Store
-</a>
-
+<div class="phone">
+<img src="IMG_0909.png">
 </div>
 
 </section>
 
-<section class="showcase">
+<section class="section">
 
-<h2 class="section-title">
-Eine App. Alles organisiert.
-</h2>
+<h2>Alles in einer App</h2>
 
-<p class="section-sub">
-Designed wie eine echte Next Generation App.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<img src="home.jpg">
-<div class="card-content">
-<h3>Home Dashboard</h3>
 <p>
-Alle wichtigen Infos auf einen Blick:
-Wetter, Aufgaben, Termine und Einkauf.
+NexDay verbindet Produktivität,
+Kalender, Einkauf und smarte Routinen
+in einer wunderschönen Apple-inspirierten Oberfläche.
 </p>
-</div>
-</div>
+
+<div class="cards">
 
 <div class="card">
-<img src="tasks.jpg">
+<img src="IMG_0910.png">
 <div class="card-content">
-<h3>Smart Tasks</h3>
+<h3>Aufgaben</h3>
 <p>
-Organisiere deinen Alltag elegant
-mit Fokus auf Produktivität.
+Behalte deinen Tagesfortschritt im Blick
+mit ultraflüssigen Animationen und smarter Organisation.
 </p>
 </div>
 </div>
 
 <div class="card">
-<img src="calendar.jpg">
+<img src="IMG_0913.png">
 <div class="card-content">
-<h3>Premium Kalender</h3>
+<h3>Kalender</h3>
 <p>
-Modernes Kalender-System mit
-ultrasmooth Navigation.
+Elegante Monatsansicht mit Fokus auf Klarheit,
+Geschwindigkeit und Übersicht.
 </p>
 </div>
 </div>
 
 <div class="card">
-<img src="shop.jpg">
+<img src="IMG_0911.png">
 <div class="card-content">
 <h3>NexShop</h3>
 <p>
-Intelligente Einkaufslisten,
-Gerichte und Kategorien.
+Deine intelligente Einkaufsliste mit Kategorien,
+Gerichten und automatischer Planung.
 </p>
 </div>
 </div>
 
 <div class="card">
-<img src="cook.jpg">
+<img src="IMG_0912.png">
 <div class="card-content">
 <h3>Kochmodus</h3>
 <p>
-Schritt-für-Schritt Rezepte mit
-integriertem Timer.
+Schritt-für-Schritt Kochen mit eingebautem Timer
+und wunderschönem Fokus-Modus.
 </p>
 </div>
 </div>
@@ -346,7 +365,17 @@ integriertem Timer.
 </section>
 
 <footer>
-© 2026 NexDay — All rights reserved.
+
+<h2>NexDay</h2>
+
+<p>
+Die Zukunft von Produktivität & Alltag.
+</p>
+
+<div class="buttons">
+<a href="#" class="btn primary">Coming Soon</a>
+</div>
+
 </footer>
 
 </body>
