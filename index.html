@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NexDay – Plan smarter. Live clearer.</title>
 
 <style>
@@ -32,8 +32,12 @@ inset:0;
 z-index:-1;
 background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);
 background-size:48px 48px;
+animation:gridMove 18s linear infinite;
 mask-image:linear-gradient(to bottom,black,transparent 85%);
 }
+
+@keyframes gridMove{100%{transform:translateY(48px)}}
+
 nav{
 position:fixed;
 top:18px;
@@ -52,6 +56,12 @@ background:#101014cc;
 border:1px solid #ffffff18;
 backdrop-filter:blur(24px);
 box-shadow:0 20px 80px #0008;
+transition:.4s;
+}
+nav:hover{
+background:#101014f2;
+border-color:#ffffff30;
+transform:translateX(-50%) translateY(-2px);
 }
 .logo{
 display:flex;
@@ -67,7 +77,7 @@ border-radius:14px;
 display:grid;
 place-items:center;
 background:radial-gradient(circle,#ffb13d,#ff7a00 45%,#151515 80%);
-box-shadow:0 0 28px #ff8a0055;
+box-shadow:0 0 28px #ff8a0066;
 }
 nav a{
 color:#dbeafe;
@@ -76,6 +86,7 @@ margin-left:22px;
 font-weight:700;
 font-size:14px;
 }
+
 .hero{
 min-height:100vh;
 padding:145px 8% 80px;
@@ -83,6 +94,7 @@ display:grid;
 grid-template-columns:1.05fr .95fr;
 align-items:center;
 gap:70px;
+perspective:1200px;
 }
 .badge{
 display:inline-flex;
@@ -101,7 +113,9 @@ font-size:clamp(56px,8vw,112px);
 line-height:.88;
 letter-spacing:-6px;
 margin-bottom:28px;
+animation:titleFloat 5s ease-in-out infinite;
 }
+@keyframes titleFloat{50%{transform:translateY(-6px)}}
 h1 span{
 background:linear-gradient(90deg,#fff,#ffb84d,#3dffe0,#8b5cf6);
 -webkit-background-clip:text;
@@ -114,551 +128,3 @@ color:#cbd5e1;
 max-width:690px;
 margin-bottom:36px;
 }
-.buttons{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
-}
-.btn{
-position:relative;
-overflow:hidden;
-padding:17px 30px;
-border-radius:999px;
-font-weight:900;
-font-size:17px;
-text-decoration:none;
-transition:.3s;
-}
-.btn:hover{transform:translateY(-4px)}
-.primary{
-background:white;
-color:#050505;
-}
-.secondary{
-background:#ffffff10;
-border:1px solid #ffffff20;
-color:white;
-backdrop-filter:blur(20px);
-}
-.stats{
-display:flex;
-gap:14px;
-flex-wrap:wrap;
-margin-top:42px;
-}
-.stat{
-padding:18px 22px;
-border-radius:24px;
-background:#ffffff0d;
-border:1px solid #ffffff14;
-backdrop-filter:blur(20px);
-}
-.stat strong{
-display:block;
-font-size:28px;
-}
-.stat span{
-color:#a7b0c5;
-font-size:14px;
-}
-.stage{
-position:relative;
-min-height:680px;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-.glow{
-position:absolute;
-width:460px;
-height:460px;
-border-radius:50%;
-background:linear-gradient(135deg,#ff8a00,#00ffd5,#7c3aed);
-filter:blur(90px);
-opacity:.45;
-animation:pulse 5s ease-in-out infinite;
-}
-@keyframes pulse{
-50%{transform:scale(1.12);opacity:.7}
-}
-.phone{
-position:relative;
-width:min(360px,78vw);
-height:720px;
-border-radius:54px;
-padding:14px;
-background:linear-gradient(145deg,#ffffff80,#ffffff10);
-border:1px solid #ffffff30;
-box-shadow:0 50px 140px #000b;
-animation:float 5s ease-in-out infinite;
-}
-@keyframes float{
-50%{transform:translateY(-18px)}
-}
-.screen{
-height:100%;
-border-radius:42px;
-padding:28px 22px;
-background:
-radial-gradient(circle at top,#ff8a0020,transparent 35%),
-radial-gradient(circle at bottom right,#00ffd520,transparent 35%),
-#090b10;
-overflow:hidden;
-position:relative;
-}
-.app-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:24px;
-}
-.app-top h3{
-font-size:34px;
-letter-spacing:-1px;
-}
-.circle{
-width:62px;
-height:62px;
-border-radius:50%;
-background:conic-gradient(#00ffd5 35%,#ffffff20 0);
-display:grid;
-place-items:center;
-font-weight:900;
-}
-.glass{
-background:#ffffff12;
-border:1px solid #ffffff18;
-border-radius:30px;
-padding:22px;
-margin-bottom:18px;
-backdrop-filter:blur(20px);
-}
-.glass h4{
-font-size:22px;
-margin-bottom:8px;
-}
-.glass p{
-font-size:15px;
-color:#aab3c8;
-margin:0;
-}
-.item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin:14px 0;
-font-weight:800;
-}
-.tag{
-padding:8px 13px;
-border-radius:999px;
-background:#22c55e;
-color:#04110a;
-font-weight:900;
-}
-.navbar{
-position:absolute;
-left:24px;
-right:24px;
-bottom:24px;
-height:74px;
-border-radius:28px;
-display:flex;
-align-items:center;
-justify-content:space-around;
-background:#050505dd;
-border:1px solid #ffffff18;
-backdrop-filter:blur(20px);
-font-size:26px;
-}
-.section{
-padding:110px 8%;
-}
-.title{
-text-align:center;
-max-width:850px;
-margin:0 auto 64px;
-}
-.title h2{
-font-size:clamp(42px,6vw,82px);
-line-height:.98;
-letter-spacing:-4px;
-margin-bottom:20px;
-}
-.title p{
-font-size:21px;
-line-height:1.5;
-color:#aeb9d6;
-}
-.grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-}
-.card{
-min-height:300px;
-padding:32px;
-border-radius:34px;
-background:#ffffff0d;
-border:1px solid #ffffff16;
-backdrop-filter:blur(22px);
-transition:.3s;
-position:relative;
-overflow:hidden;
-}
-.card:hover{
-transform:translateY(-8px);
-background:#ffffff14;
-}
-.card:after{
-content:"";
-position:absolute;
-width:180px;
-height:180px;
-right:-60px;
-bottom:-60px;
-border-radius:50%;
-background:#ff8a0030;
-filter:blur(18px);
-}
-.icon{
-font-size:44px;
-margin-bottom:62px;
-}
-.card h3{
-font-size:29px;
-margin-bottom:14px;
-letter-spacing:-1px;
-}
-.card p{
-font-size:17px;
-line-height:1.6;
-color:#b8c4e0;
-}
-.showcase{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:24px;
-}
-.panel{
-min-height:560px;
-border-radius:44px;
-padding:44px;
-position:relative;
-overflow:hidden;
-background:#ffffff0d;
-border:1px solid #ffffff16;
-}
-.panel.orange{
-background:
-radial-gradient(circle at 80% 80%,#ff8a0045,transparent 34%),
-#ffffff0d;
-}
-.panel.green{
-background:
-radial-gradient(circle at 80% 80%,#00ff9940,transparent 34%),
-#ffffff0d;
-}
-.panel h3{
-font-size:clamp(36px,4.5vw,58px);
-line-height:1;
-letter-spacing:-3px;
-margin-bottom:18px;
-}
-.panel p{
-font-size:20px;
-line-height:1.55;
-color:#cbd5e1;
-max-width:520px;
-}
-.fake-screen{
-position:absolute;
-left:50%;
-bottom:-70px;
-transform:translateX(-50%);
-width:300px;
-height:420px;
-border-radius:40px;
-background:#06100b;
-border:1px solid #ffffff20;
-box-shadow:0 30px 90px #0008;
-padding:24px;
-}
-.fake-row{
-padding:18px;
-border-radius:22px;
-background:#ffffff12;
-margin-bottom:14px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-weight:900;
-}
-.compare{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:24px;
-}
-.compare-box{
-padding:38px;
-border-radius:34px;
-border:1px solid #ffffff16;
-}
-.bad{background:#ef44441a}
-.good{background:#22c55e1a}
-.compare-box h3{
-font-size:36px;
-margin-bottom:26px;
-}
-.compare-box li{
-list-style:none;
-font-size:19px;
-margin-bottom:18px;
-color:#e2e8f0;
-}
-.cta{
-margin:80px 8% 100px;
-padding:95px 28px;
-border-radius:52px;
-text-align:center;
-background:
-radial-gradient(circle at 30% 20%,#ff8a0055,transparent 30%),
-radial-gradient(circle at 80% 80%,#00ffd555,transparent 30%),
-white;
-color:#050505;
-}
-.cta h2{
-font-size:clamp(46px,7vw,88px);
-line-height:.95;
-letter-spacing:-5px;
-margin-bottom:20px;
-}
-.cta p{
-font-size:22px;
-color:#475569;
-margin-bottom:34px;
-}
-.store{
-display:inline-block;
-background:#050505;
-color:white;
-padding:15px 24px;
-border-radius:18px;
-margin:8px;
-text-align:left;
-min-width:180px;
-}
-.store small{
-display:block;
-color:#94a3b8;
-font-size:12px;
-}
-.store b{
-font-size:22px;
-}
-footer{
-padding:42px 8%;
-display:flex;
-justify-content:space-between;
-gap:20px;
-color:#94a3b8;
-border-top:1px solid #ffffff12;
-}
-footer a{
-color:#cbd5e1;
-text-decoration:none;
-}
-@media(max-width:1050px){
-.hero{
-grid-template-columns:1fr;
-text-align:center;
-}
-.hero p{margin:0 auto 36px}
-.buttons,.stats{justify-content:center}
-.grid{grid-template-columns:repeat(2,1fr)}
-.showcase,.compare{grid-template-columns:1fr}
-.stage{min-height:620px}
-}
-@media(max-width:700px){
-nav{height:64px}
-nav div:last-child{display:none}
-.hero{padding:125px 24px 70px}
-h1{letter-spacing:-4px}
-.phone{width:300px;height:610px}
-.screen{padding:22px 18px}
-.grid{grid-template-columns:1fr}
-.section{padding:80px 24px}
-.panel{min-height:520px;padding:30px}
-.fake-screen{width:235px;height:360px}
-.cta{margin:50px 24px 70px;padding:70px 22px;border-radius:38px}
-footer{flex-direction:column;padding:34px 24px}
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-<div class="logo">
-<div class="logo-icon">✓</div>
-NexDay
-</div>
-<div>
-<a href="#features">Features</a>
-<a href="#app">App</a>
-<a href="#compare">Warum?</a>
-<a href="#download">Download</a>
-</div>
-</nav>
-
-<section class="hero">
-<div>
-<div class="badge">✨ Plan smarter. Live clearer.</div>
-<h1>Die App für deinen <span>klareren Alltag.</span></h1>
-<p>
-NexDay vereint Aufgaben, Kalender, Einkauf, Wetter und Alltagstools in einer einzigen modernen App.
-Organisiere deinen Tag schneller, schöner und stressfreier.
-</p>
-
-<div class="buttons">
-<a class="btn primary" href="#download">Jetzt starten</a>
-<a class="btn secondary" href="#features">Features ansehen</a>
-</div>
-
-<div class="stats">
-<div class="stat"><strong>4-in-1</strong><span>Tasks · Kalender · Shop · Tools</span></div>
-<div class="stat"><strong>Smart</strong><span>für Alltag & Planung</span></div>
-<div class="stat"><strong>Dark UI</strong><span>Premium App Experience</span></div>
-</div>
-</div>
-
-<div class="stage" id="app">
-<div class="glow"></div>
-
-<div class="phone">
-<div class="screen">
-
-<div class="app-top">
-<h3>Heute</h3>
-<div class="circle">68%</div>
-</div>
-
-<div class="glass">
-<h4>Einkauf offen</h4>
-<p>Deine Liste wartet auf dich.</p>
-<div class="item"><span>✅ Aufgaben</span><span>0 offen</span></div>
-<div class="item"><span>📅 Termine</span><span>frei</span></div>
-<div class="item"><span>🛒 Produkte</span><span>8 offen</span></div>
-</div>
-
-<div class="glass">
-<h4>Ruhiger Abendmodus</h4>
-<p>12° · überwiegend bewölkt · Nacht</p>
-</div>
-
-<div class="glass">
-<h4>Schnellzugriff</h4>
-<p>Task · Termin · Shop · Timer · Wecker</p>
-</div>
-
-<div class="navbar">
-<span>🏠</span><span>✅</span><span>📅</span><span>🛒</span><span>⚙️</span>
-</div>
-
-</div>
-</div>
-</div>
-</section>
-
-<section class="section" id="features">
-<div class="title">
-<h2>Alles für deinen Tag. In einer App.</h2>
-<p>NexDay ersetzt Chaos, Notizen, Einkaufslisten und verstreute Erinnerungen durch ein klares System.</p>
-</div>
-
-<div class="grid">
-<div class="card"><div class="icon">✅</div><h3>Aufgaben</h3><p>Plane To-dos, Fortschritt und Tagesziele mit einer ruhigen Oberfläche.</p></div>
-<div class="card"><div class="icon">📅</div><h3>Kalender</h3><p>Behalte Termine, Tage, Feiertage und Erinnerungen perfekt im Blick.</p></div>
-<div class="card"><div class="icon">🛒</div><h3>NexShop</h3><p>Einkaufslisten mit Mengen, Kategorien und schnellen Produktaktionen.</p></div>
-<div class="card"><div class="icon">🌙</div><h3>Alltag</h3><p>Wetter, Timer, Wecker und Schnellzugriffe für deinen täglichen Flow.</p></div>
-</div>
-</section>
-
-<section class="section">
-<div class="showcase">
-<div class="panel orange">
-<h3>Planung, die sich leicht anfühlt.</h3>
-<p>Große Karten, sanfte Farben und klare Informationen helfen dir, deinen Tag schneller zu verstehen.</p>
-
-<div class="fake-screen">
-<div class="fake-row"><span>✅ Aufgaben</span><span>4</span></div>
-<div class="fake-row"><span>📅 Termine</span><span>2</span></div>
-<div class="fake-row"><span>🛒 Einkauf</span><span>8</span></div>
-<div class="fake-row"><span>🌙 Fokus</span><span>aktiv</span></div>
-</div>
-</div>
-
-<div class="panel green">
-<h3>Einkaufen ohne Chaos.</h3>
-<p>Mit NexShop organisierst du Produkte, Mengen und Kategorien schneller als mit normalen Listen.</p>
-
-<div class="fake-screen">
-<div class="fake-row"><span>Tomaten</span><span class="tag">2</span></div>
-<div class="fake-row"><span>Knoblauch</span><span class="tag">1</span></div>
-<div class="fake-row"><span>Nudeln</span><span class="tag">✓</span></div>
-<div class="fake-row"><span>Zwiebeln</span><span class="tag">1</span></div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="section" id="compare">
-<div class="title">
-<h2>Warum NexDay?</h2>
-<p>Weil dein Alltag nicht aus fünf Apps bestehen sollte.</p>
-</div>
-
-<div class="compare">
-<div class="compare-box bad">
-<h3>Normale Apps</h3>
-<ul>
-<li>❌ Aufgaben irgendwo</li>
-<li>❌ Einkaufsliste separat</li>
-<li>❌ Kalender ohne Alltag</li>
-<li>❌ Zu viele Apps</li>
-<li>❌ Keine klare Übersicht</li>
-</ul>
-</div>
-
-<div class="compare-box good">
-<h3>NexDay</h3>
-<ul>
-<li>✅ Alles in einer App</li>
-<li>✅ Aufgaben, Kalender & Shop</li>
-<li>✅ Modernes Dark Design</li>
-<li>✅ Schnellzugriffe für Alltag</li>
-<li>✅ Weniger Stress, mehr Fokus</li>
-</ul>
-</div>
-</div>
-</section>
-
-<section class="cta" id="download">
-<h2>Bereit für deinen nächsten Tag?</h2>
-<p>NexDay bringt Struktur, Ruhe und Klarheit in deinen Alltag.</p>
-
-<div>
-<div class="store"><small>Laden im</small><b>App Store</b></div>
-<div class="store"><small>Jetzt bei</small><b>Google Play</b></div>
-</div>
-</section>
-
-<footer>
-<strong>NexDay</strong>
-<span>
-<a href="mailto:support@getnexday.com">support@getnexday.com</a> · © 2026 NexDay
-</span>
-</footer>
-
-</body>
-</html>
