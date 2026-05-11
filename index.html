@@ -1,1048 +1,236 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NexDay — Plan smarter. Live clearer.</title>
-<meta name="description" content="NexDay ist die Premium All-in-One App für Aufgaben, Kalender, Einkauf, Meal Planner, Kochmodus, Notizen und Alltag.">
+<!-- NexDay Premium Website v2 -->
+<!-- Ersetze deine aktuelle Datei komplett damit -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
-background:#030306;
-color:white;
-overflow-x:hidden;
-}
-a{text-decoration:none;color:inherit}
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-z-index:-5;
-background:
-radial-gradient(circle at 12% 8%,rgba(255,132,0,.55),transparent 28%),
-radial-gradient(circle at 88% 12%,rgba(0,229,255,.42),transparent 32%),
-radial-gradient(circle at 50% 92%,rgba(139,92,246,.45),transparent 42%),
-#030306;
-animation:bgPulse 9s ease-in-out infinite alternate;
+  font-family:"Geist",-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-@keyframes bgPulse{
-to{filter:hue-rotate(12deg) saturate(1.15)}
+h1,h2,h3,.logo{
+  font-family:"Geist",sans-serif;
 }
 
-body::after{
-content:"";
-position:fixed;
-inset:0;
-z-index:-4;
-background-image:
-linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
-background-size:46px 46px;
-mask-image:linear-gradient(to bottom,#000,transparent 86%);
-animation:gridMove 26s linear infinite;
-}
-
-@keyframes gridMove{to{transform:translateY(46px)}}
-
-.noise{
-position:fixed;
-inset:0;
-pointer-events:none;
-z-index:9999;
-opacity:.035;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.orb{
-position:fixed;
-border-radius:50%;
-filter:blur(120px);
-opacity:.55;
-z-index:-3;
-animation:orb 12s ease-in-out infinite alternate;
-}
-.o1{width:460px;height:460px;background:#ff8a00;top:-140px;left:-120px}
-.o2{width:580px;height:580px;background:#00e5ff;top:60px;right:-220px;animation-delay:2s}
-.o3{width:620px;height:620px;background:#8b5cf6;bottom:-240px;left:20%;animation-delay:4s}
-
-@keyframes orb{
-to{transform:translate3d(55px,-42px,0) scale(1.18)}
-}
-
-nav{
-position:fixed;
-top:18px;
-left:50%;
-transform:translateX(-50%);
-width:min(1180px,calc(100% - 28px));
-height:68px;
-z-index:1000;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 22px;
-border-radius:999px;
-background:rgba(10,10,16,.68);
-border:1px solid rgba(255,255,255,.14);
-backdrop-filter:blur(32px);
-box-shadow:0 24px 90px rgba(0,0,0,.55);
-}
-
-.logo{
-font-size:28px;
-font-weight:950;
-letter-spacing:-1.5px;
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.logo-dot{
-width:13px;
-height:13px;
-border-radius:50%;
-background:linear-gradient(135deg,#ff8a00,#00e5ff);
-box-shadow:0 0 30px rgba(0,229,255,.8);
-}
-
-.logo span{
-background:linear-gradient(90deg,#ff8a00,#00e5ff,#a78bfa);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.navlinks{
-display:flex;
-align-items:center;
-gap:26px;
-}
-
-.navlinks a{
-font-size:14px;
-font-weight:800;
-color:#dce6f7;
-opacity:.88;
-}
-
-.nav-cta{
-padding:13px 22px;
-border-radius:999px;
-font-weight:950;
-background:linear-gradient(90deg,#ff8a00,#00d9ff);
-box-shadow:0 0 35px rgba(0,217,255,.25);
-}
-
+/* MEHR PREMIUM MOTION */
 .hero{
-min-height:100vh;
-padding:150px 7vw 90px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:70px;
-align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:900px;
+  height:900px;
+  right:-280px;
+  top:-260px;
+  background:conic-gradient(from 90deg,#ff8a00,#00e5ff,#8b5cf6,#ff8a00);
+  filter:blur(140px);
+  opacity:.42;
+  animation:spinGlow 18s linear infinite;
+  z-index:-2;
+}
+
+@keyframes spinGlow{
+  to{transform:rotate(360deg)}
 }
 
 .badge{
-display:inline-flex;
-gap:10px;
-align-items:center;
-padding:11px 17px;
-border-radius:999px;
-margin-bottom:26px;
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.14);
-color:#ffd39a;
-font-size:14px;
-font-weight:950;
+  animation:badgeFloat 4s ease-in-out infinite;
 }
 
-h1{
-font-size:clamp(58px,8vw,120px);
-line-height:.86;
-letter-spacing:-6px;
-margin-bottom:28px;
-font-weight:950;
+@keyframes badgeFloat{
+  50%{transform:translateY(-7px)}
 }
 
 h1 span{
-background:linear-gradient(90deg,#fff,#ffe0ad,#74f7ff,#b18cff);
--webkit-background-clip:text;
-color:transparent;
+  background:linear-gradient(90deg,#fff,#ffb86b,#62f4ff,#b794ff,#fff);
+  background-size:260% auto;
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:textFlow 5s linear infinite;
 }
 
-.hero p{
-font-size:clamp(20px,2vw,27px);
-line-height:1.5;
-color:#c8d0df;
-max-width:720px;
-}
-
-.actions{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-margin-top:36px;
-}
-
-.btn{
-position:relative;
-overflow:hidden;
-padding:17px 30px;
-border-radius:999px;
-font-size:17px;
-font-weight:950;
-transition:.35s cubic-bezier(.16,1,.3,1);
-}
-
-.btn:hover{transform:translateY(-4px) scale(1.02)}
-
-.btn::before{
-content:"";
-position:absolute;
-top:0;
-left:-120%;
-width:80%;
-height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
-transform:skewX(-20deg);
-}
-
-.btn:hover::before{animation:shine 1s ease}
-@keyframes shine{to{left:140%}}
-
-.primary{background:#fff;color:#050505}
-.secondary{
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.14);
-backdrop-filter:blur(22px);
-}
-
-.metrics{
-display:flex;
-gap:14px;
-flex-wrap:wrap;
-margin-top:42px;
-}
-
-.metric{
-padding:17px 20px;
-border-radius:22px;
-background:rgba(255,255,255,.075);
-border:1px solid rgba(255,255,255,.11);
-backdrop-filter:blur(22px);
-}
-
-.metric strong{
-display:block;
-font-size:25px;
-letter-spacing:-1px;
-}
-.metric small{color:#aab4c7;font-weight:800}
-
-.stage{
-position:relative;
-min-height:760px;
-display:flex;
-align-items:center;
-justify-content:center;
-perspective:1400px;
-}
-
-.stage-glow{
-position:absolute;
-width:620px;
-height:620px;
-border-radius:50%;
-background:linear-gradient(135deg,#ff8a00,#00e5ff,#8b5cf6);
-filter:blur(115px);
-opacity:.55;
-animation:pulse 7s ease-in-out infinite;
-}
-
-@keyframes pulse{
-50%{transform:scale(1.15);opacity:.8}
+@keyframes textFlow{
+  to{background-position:260% center}
 }
 
 .phone{
-position:relative;
-width:min(370px,82vw);
-border-radius:56px;
-padding:10px;
-background:linear-gradient(145deg,rgba(255,255,255,.65),rgba(255,255,255,.08));
-border:1px solid rgba(255,255,255,.25);
-box-shadow:0 60px 160px rgba(0,0,0,.82);
-overflow:hidden;
-animation:float 6s ease-in-out infinite;
-transform-style:preserve-3d;
+  animation:phoneFloat 5.5s ease-in-out infinite;
 }
 
-@keyframes float{
-50%{transform:translateY(-18px) rotateX(3deg) rotateY(-3deg)}
-}
-
-.phone img{
-width:100%;
-display:block;
-border-radius:46px;
+@keyframes phoneFloat{
+  50%{transform:translateY(-24px) rotateX(5deg) rotateY(-5deg) scale(1.025)}
 }
 
 .floating{
-position:absolute;
-padding:16px 18px;
-border-radius:24px;
-background:rgba(255,255,255,.11);
-border:1px solid rgba(255,255,255,.16);
-backdrop-filter:blur(32px);
-box-shadow:0 24px 80px rgba(0,0,0,.4);
-font-weight:950;
-animation:miniFloat 5s ease-in-out infinite;
+  animation:glassFloat 4.5s ease-in-out infinite;
 }
 
-@keyframes miniFloat{
-50%{transform:translateY(-14px)}
+@keyframes glassFloat{
+  50%{transform:translateY(-18px) scale(1.04)}
 }
 
-.f1{top:105px;left:0}
-.f2{right:0;bottom:150px;animation-delay:1s}
-.f3{left:20px;bottom:70px;color:#7fffe2;animation-delay:2s}
-.f4{right:25px;top:210px;color:#ffd39a;animation-delay:3s}
-
-.section{
-padding:110px 7vw;
+/* PREMIUM FEATURE STRIP */
+.premium-strip{
+  margin-top:34px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
-.center{
-text-align:center;
-max-width:980px;
-margin:0 auto 70px;
+.pill{
+  padding:13px 17px;
+  border-radius:999px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.14);
+  color:#eaf4ff;
+  font-weight:800;
+  backdrop-filter:blur(22px);
 }
 
-.center h2{
-font-size:clamp(42px,6vw,86px);
-line-height:.98;
-letter-spacing:-4px;
-margin-bottom:20px;
+/* NEXSHOP PRO SECTION */
+.nexshop-pro{
+  padding:110px 7vw;
 }
 
-.center p{
-font-size:21px;
-line-height:1.65;
-color:#aeb8ca;
+.nexshop-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:56px;
+  padding:70px;
+  background:
+    radial-gradient(circle at 18% 10%,rgba(255,138,0,.35),transparent 34%),
+    radial-gradient(circle at 88% 78%,rgba(0,229,255,.28),transparent 38%),
+    rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(34px);
+  box-shadow:0 50px 140px rgba(0,0,0,.55);
 }
 
-.marquee-wrap{
-overflow:hidden;
-margin:20px 0 10px;
-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
+.nexshop-card::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:translateX(-120%);
+  animation:cardShine 7s ease-in-out infinite;
 }
 
-.marquee{
-display:flex;
-gap:22px;
-width:max-content;
-animation:marquee 44s linear infinite;
+@keyframes cardShine{
+  45%,100%{transform:translateX(120%)}
 }
 
-@keyframes marquee{to{transform:translateX(-50%)}}
-
-.mini-screen{
-width:230px;
-border-radius:34px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.14);
-box-shadow:0 35px 90px rgba(0,0,0,.5);
-background:rgba(255,255,255,.06);
+.nexshop-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:60px;
+  align-items:center;
+  position:relative;
+  z-index:2;
 }
 
-.mini-screen img{
-width:100%;
-display:block;
+.nexshop-card h2{
+  font-size:clamp(46px,6vw,88px);
+  line-height:.92;
+  letter-spacing:-4px;
+  margin-bottom:22px;
 }
 
-.bento{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
+.nexshop-card p{
+  color:#c4cede;
+  font-size:20px;
+  line-height:1.65;
+  max-width:720px;
 }
 
-.tile{
-min-height:300px;
-padding:30px;
-border-radius:36px;
-background:rgba(255,255,255,.07);
-border:1px solid rgba(255,255,255,.12);
-backdrop-filter:blur(26px);
-position:relative;
-overflow:hidden;
-transition:.4s cubic-bezier(.16,1,.3,1);
+.sync-list{
+  display:grid;
+  gap:14px;
+  margin-top:30px;
 }
 
-.tile:hover{
-transform:translateY(-10px);
-background:rgba(255,255,255,.11);
-box-shadow:0 30px 100px rgba(0,0,0,.42);
+.sync-item{
+  padding:18px 20px;
+  border-radius:24px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.13);
+  font-weight:850;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
 }
 
-.tile::after{
-content:"";
-position:absolute;
-width:180px;
-height:180px;
-right:-60px;
-bottom:-60px;
-border-radius:50%;
-background:rgba(0,229,255,.18);
-filter:blur(25px);
+.sync-item span{
+  color:#7ff7ff;
 }
 
-.tile-icon{
-width:60px;
-height:60px;
-border-radius:22px;
-display:grid;
-place-items:center;
-font-size:28px;
-margin-bottom:58px;
-background:linear-gradient(135deg,rgba(255,138,0,.3),rgba(0,229,255,.2));
-border:1px solid rgba(255,255,255,.13);
+.invite-box{
+  border-radius:42px;
+  padding:28px;
+  background:#05070d;
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 40px 110px rgba(0,0,0,.55);
 }
 
-.tile h3{
-font-size:28px;
-letter-spacing:-1px;
-margin-bottom:12px;
-}
-.tile p{
-color:#b7c1d2;
-line-height:1.65;
-font-size:16px;
-}
-
-.story{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:80px;
-align-items:center;
-margin-bottom:160px;
+.code{
+  margin:20px 0;
+  padding:24px;
+  border-radius:26px;
+  text-align:center;
+  font-size:42px;
+  letter-spacing:8px;
+  font-weight:950;
+  background:linear-gradient(135deg,rgba(255,138,0,.18),rgba(0,229,255,.18));
+  border:1px solid rgba(255,255,255,.16);
+  color:#fff;
 }
 
-.story.reverse{direction:rtl}
-.story.reverse *{direction:ltr}
-
-.story-text span{
-display:inline-block;
-font-size:13px;
-font-weight:950;
-letter-spacing:2px;
-color:#77f7ff;
-margin-bottom:18px;
+.avatar-row{
+  display:flex;
+  margin-top:20px;
 }
 
-.story-text h2{
-font-size:clamp(42px,5vw,76px);
-line-height:.98;
-letter-spacing:-3.5px;
-margin-bottom:24px;
+.avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin-right:-10px;
+  background:linear-gradient(135deg,#ff8a00,#00e5ff);
+  border:3px solid #05070d;
+  font-weight:950;
 }
 
-.story-text p{
-font-size:19px;
-line-height:1.78;
-color:#bbc5d6;
-margin-bottom:18px;
+.live-dot{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#75ffcb;
+  font-weight:900;
+  margin-bottom:18px;
 }
 
-.points{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-margin-top:28px;
+.live-dot::before{
+  content:"";
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#75ffcb;
+  box-shadow:0 0 22px #75ffcb;
+  animation:blink 1.4s ease-in-out infinite;
 }
 
-.points div{
-padding:16px;
-border-radius:20px;
-background:rgba(255,255,255,.075);
-border:1px solid rgba(255,255,255,.11);
-font-weight:850;
-color:#edf5ff;
+@keyframes blink{
+  50%{opacity:.35;transform:scale(.75)}
 }
 
-.device{
-display:flex;
-justify-content:center;
-position:relative;
-}
-
-.device::before{
-content:"";
-position:absolute;
-width:440px;
-height:440px;
-border-radius:50%;
-background:radial-gradient(circle,rgba(0,229,255,.3),transparent 70%);
-filter:blur(90px);
-z-index:-1;
-}
-
-.device-frame{
-width:min(420px,100%);
-padding:9px;
-border-radius:48px;
-background:linear-gradient(145deg,rgba(255,255,255,.45),rgba(255,255,255,.06));
-border:1px solid rgba(255,255,255,.16);
-box-shadow:0 40px 130px rgba(0,0,0,.62);
-}
-
-.device-frame img{
-width:100%;
-display:block;
-border-radius:40px;
-}
-
-.showcase-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
-}
-
-.showcase-card{
-border-radius:40px;
-overflow:hidden;
-background:rgba(255,255,255,.065);
-border:1px solid rgba(255,255,255,.13);
-box-shadow:0 35px 100px rgba(0,0,0,.5);
-transition:.45s cubic-bezier(.16,1,.3,1);
-}
-
-.showcase-card:hover{
-transform:translateY(-12px) scale(1.02);
-box-shadow:0 45px 130px rgba(0,0,0,.65);
-}
-
-.showcase-card img{
-width:100%;
-display:block;
-}
-
-.caption{
-padding:26px;
-}
-
-.caption h3{
-font-size:26px;
-letter-spacing:-1px;
-margin-bottom:9px;
-}
-.caption p{
-color:#aeb8ca;
-line-height:1.6;
-font-size:15px;
-}
-
-.live{
-border-radius:50px;
-padding:58px;
-background:rgba(255,255,255,.065);
-border:1px solid rgba(255,255,255,.13);
-backdrop-filter:blur(30px);
-position:relative;
-overflow:hidden;
-min-height:390px;
-box-shadow:0 35px 110px rgba(0,0,0,.38);
-}
-
-.live h2{
-font-size:clamp(40px,5vw,72px);
-letter-spacing:-3px;
-line-height:.98;
-margin-bottom:20px;
-}
-
-.live p{
-font-size:20px;
-line-height:1.65;
-color:#b8c3d4;
-max-width:720px;
-}
-
-.toast{
-position:absolute;
-right:44px;
-padding:18px 22px;
-border-radius:24px;
-background:rgba(255,255,255,.12);
-border:1px solid rgba(255,255,255,.18);
-backdrop-filter:blur(26px);
-box-shadow:0 25px 80px rgba(0,0,0,.4);
-font-weight:950;
-animation:toast 6s ease-in-out infinite;
-}
-
-.t1{top:54px}
-.t2{top:142px;animation-delay:1.3s}
-.t3{top:230px;animation-delay:2.6s}
-
-@keyframes toast{
-50%{transform:translateY(-16px) translateX(-8px)}
-}
-
-.compare{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:24px;
-}
-
-.compare-box{
-padding:40px;
-border-radius:36px;
-border:1px solid rgba(255,255,255,.12);
-backdrop-filter:blur(24px);
-}
-
-.bad{background:rgba(239,68,68,.13)}
-.good{background:rgba(34,197,94,.13)}
-
-.compare-box h3{
-font-size:34px;
-letter-spacing:-1.5px;
-margin-bottom:25px;
-}
-
-.compare-box li{
-list-style:none;
-font-size:18px;
-margin-bottom:17px;
-color:#e4ecf8;
-}
-
-.cta{
-margin:70px 7vw 95px;
-padding:96px 28px;
-text-align:center;
-border-radius:56px;
-background:
-radial-gradient(circle at 25% 20%,rgba(255,138,0,.5),transparent 35%),
-radial-gradient(circle at 75% 78%,rgba(0,229,255,.45),transparent 35%),
-#f6f7fb;
-color:#050505;
-}
-
-.cta h2{
-font-size:clamp(48px,7vw,90px);
-line-height:.95;
-letter-spacing:-5px;
-margin-bottom:20px;
-}
-
-.cta p{
-font-size:22px;
-color:#4b5563;
-margin-bottom:34px;
-}
-
-.store{
-display:inline-block;
-background:#050505;
-color:#fff;
-padding:15px 23px;
-border-radius:18px;
-margin:8px;
-text-align:left;
-min-width:178px;
-}
-
-.store small{
-display:block;
-color:#a5adbd;
-font-size:12px;
-}
-
-.store b{font-size:21px}
-
-footer{
-padding:42px 7vw;
-border-top:1px solid rgba(255,255,255,.09);
-display:flex;
-justify-content:space-between;
-gap:20px;
-color:#95a0b3;
-}
-
-footer a{color:#dbe4f5}
-
-.reveal{
-opacity:0;
-transform:translateY(65px) scale(.97);
-transition:1s cubic-bezier(.16,1,.3,1);
-}
-
-.reveal.show{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-
-@media(max-width:1050px){
-.hero{grid-template-columns:1fr;text-align:center}
-.hero p{margin:auto}
-.actions,.metrics{justify-content:center}
-.stage{min-height:640px}
-.bento{grid-template-columns:repeat(2,1fr)}
-.story,.story.reverse,.compare{grid-template-columns:1fr;direction:ltr}
-.showcase-grid{grid-template-columns:repeat(2,1fr)}
-.floating{display:none}
-}
-
-@media(max-width:700px){
-nav{height:64px}
-.navlinks{display:none}
-.logo{font-size:25px}
-.hero{padding:125px 22px 70px}
-h1{letter-spacing:-3.5px}
-.phone{width:310px}
-.section{padding:78px 22px}
-.bento,.showcase-grid{grid-template-columns:1fr}
-.mini-screen{width:190px}
-.points{grid-template-columns:1fr}
-.live{padding:30px;border-radius:36px}
-.toast{position:relative;right:auto;top:auto!important;margin-top:14px}
-.cta{margin:45px 22px 70px;padding:72px 22px;border-radius:40px}
-footer{flex-direction:column;padding:34px 22px}
+@media(max-width:900px){
+  .nexshop-card{padding:38px}
+  .nexshop-grid{grid-template-columns:1fr}
 }
 </style>
-</head>
-
-<body>
-
-<div class="noise"></div>
-<div class="orb o1"></div>
-<div class="orb o2"></div>
-<div class="orb o3"></div>
-
-<nav>
-  <div class="logo"><div class="logo-dot"></div>Nex<span>Day</span></div>
-  <div class="navlinks">
-    <a href="#features">Features</a>
-    <a href="#screens">Screens</a>
-    <a href="#why">Warum?</a>
-    <a class="nav-cta" href="#download">Coming Soon</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="reveal">
-    <div class="badge">Premium All-in-One App für deinen Alltag</div>
-    <h1>Dein Alltag.<br><span>Neu organisiert.</span></h1>
-    <p>
-      NexDay verbindet Aufgaben, Kalender, Einkauf, Meal Planner, Kochmodus,
-      Notizen, Wetter, Timer und Schnellzugriffe in einer einzigen modernen App.
-      Weniger App-Wechsel. Mehr Klarheit. Mehr Fokus.
-    </p>
-
-    <div class="actions">
-      <a href="#screens" class="btn primary">App ansehen</a>
-      <a href="#download" class="btn secondary">Bald im App Store</a>
-    </div>
-
-    <div class="metrics">
-      <div class="metric"><strong>9-in-1</strong><small>Tasks · Kalender · Shop · Meals · Notizen</small></div>
-      <div class="metric"><strong>Premium</strong><small>Apple-like Dark UI</small></div>
-      <div class="metric"><strong>Smart</strong><small>Ein System für den Alltag</small></div>
-    </div>
-  </div>
-
-  <div class="stage reveal">
-    <div class="stage-glow"></div>
-    <div class="floating f1">Heute im Blick</div>
-    <div class="floating f2">Einkauf bereit</div>
-    <div class="floating f3">Meal Planner aktiv</div>
-    <div class="floating f4">Notizen gespeichert</div>
-
-    <div class="phone">
-      <img src="IMG_0932.png" alt="NexDay Home Dashboard">
-    </div>
-  </div>
-</section>
-
-<section class="section reveal">
-  <div class="marquee-wrap">
-    <div class="marquee">
-      <div class="mini-screen"><img src="IMG_0932.png"></div>
-      <div class="mini-screen"><img src="IMG_0933.png"></div>
-      <div class="mini-screen"><img src="IMG_0934.png"></div>
-      <div class="mini-screen"><img src="IMG_0935.png"></div>
-      <div class="mini-screen"><img src="IMG_0936.png"></div>
-      <div class="mini-screen"><img src="IMG_0937.png"></div>
-      <div class="mini-screen"><img src="IMG_0940.png"></div>
-      <div class="mini-screen"><img src="IMG_0941.png"></div>
-      <div class="mini-screen"><img src="IMG_0951.png"></div>
-      <div class="mini-screen"><img src="IMG_0942.png"></div>
-
-      <div class="mini-screen"><img src="IMG_0932.png"></div>
-      <div class="mini-screen"><img src="IMG_0933.png"></div>
-      <div class="mini-screen"><img src="IMG_0934.png"></div>
-      <div class="mini-screen"><img src="IMG_0935.png"></div>
-      <div class="mini-screen"><img src="IMG_0936.png"></div>
-      <div class="mini-screen"><img src="IMG_0937.png"></div>
-      <div class="mini-screen"><img src="IMG_0940.png"></div>
-      <div class="mini-screen"><img src="IMG_0941.png"></div>
-      <div class="mini-screen"><img src="IMG_0951.png"></div>
-      <div class="mini-screen"><img src="IMG_0942.png"></div>
-    </div>
-  </div>
-</section>
-
-<section class="section reveal">
-  <div class="live">
-    <h2>Eine App, die sich lebendig anfühlt.</h2>
-    <p>
-      NexDay zeigt nicht einfach nur Listen. Die App reagiert auf deinen Tag:
-      Termine, Einkauf, Kochen, Wetter, Aufgaben und Schnellzugriffe arbeiten als ein System zusammen.
-    </p>
-
-    <div class="toast t1">✓ Aufgabe erledigt</div>
-    <div class="toast t2">🛒 Einkaufsliste bereit</div>
-    <div class="toast t3">🍝 Gericht für heute geplant</div>
-  </div>
-</section>
-
-<section class="section reveal" id="features">
-  <div class="center">
-    <h2>Mehr als Produktivität.</h2>
-    <p>
-      NexDay ist keine normale To-do-App. Es ist eine moderne Alltagssuite,
-      die Planung, Einkauf, Kochen, Termine und Notizen intelligent verbindet.
-    </p>
-  </div>
-
-  <div class="bento">
-    <div class="tile"><div class="tile-icon">✓</div><h3>Aufgaben</h3><p>Plane deinen Tag, tracke Fortschritt und erledige Dinge mit weniger Ablenkung.</p></div>
-    <div class="tile"><div class="tile-icon">▣</div><h3>Kalender</h3><p>Termine, Kategorien und Monatsübersicht in einer ruhigen Premium-Oberfläche.</p></div>
-    <div class="tile"><div class="tile-icon">🛒</div><h3>NexShop</h3><p>Einkaufslisten mit Mengen, Kategorien, Gerichten und Einkaufsmodus.</p></div>
-    <div class="tile"><div class="tile-icon">✎</div><h3>Notizen</h3><p>Gedanken, Ideen und wichtige Infos direkt im Alltagssystem speichern.</p></div>
-  </div>
-</section>
-
-<section class="section">
-
-  <div class="story reveal">
-    <div class="story-text">
-      <span>DAILY HUB</span>
-      <h2>Dein Tag auf einen Blick.</h2>
-      <p>
-        Home kombiniert Wetter, Aufgaben, Einkauf, Termine, laufende Timer und Schnellzugriffe
-        in einem zentralen Dashboard.
-      </p>
-      <p>
-        Statt fünf Apps zu öffnen, siehst du sofort, was heute wichtig ist.
-      </p>
-      <div class="points">
-        <div>✓ Tagesübersicht</div>
-        <div>✓ Wetter & Status</div>
-        <div>✓ Schnellzugriffe</div>
-        <div>✓ Home Layout anpassbar</div>
-      </div>
-    </div>
-    <div class="device"><div class="device-frame"><img src="IMG_0932.png" alt="Home Dashboard"></div></div>
-  </div>
-
-  <div class="story reverse reveal">
-    <div class="story-text">
-      <span>PERSONALISIERBAR</span>
-      <h2>Dein Home. Deine Reihenfolge.</h2>
-      <p>
-        Mit dem Home Layout kannst du Karten sortieren, aktivieren oder ausblenden.
-        NexDay passt sich deinem Alltag an — nicht andersherum.
-      </p>
-      <p>
-        So bleibt deine Startseite aufgeräumt, persönlich und wirklich nützlich.
-      </p>
-      <div class="points">
-        <div>✓ Karten sortieren</div>
-        <div>✓ Bereiche ausblenden</div>
-        <div>✓ Schnell anpassbar</div>
-        <div>✓ Persönliches Dashboard</div>
-      </div>
-    </div>
-    <div class="device"><div class="device-frame"><img src="IMG_0933.png" alt="Home Layout"></div></div>
-  </div>
-
-  <div class="story reveal">
-    <div class="story-text">
-      <span>SMART TASKS</span>
-      <h2>Aufgaben mit Fortschritt.</h2>
-      <p>
-        NexDay zeigt nicht nur offene Aufgaben, sondern deinen echten Tagesfortschritt.
-        Du siehst sofort, was offen, erledigt und als Nächstes wichtig ist.
-      </p>
-      <p>
-        Das macht Produktivität ruhiger, klarer und motivierender.
-      </p>
-      <div class="points">
-        <div>✓ Fortschritt</div>
-        <div>✓ Tagesplanung</div>
-        <div>✓ Erledigte Aufgaben</div>
-        <div>✓ Fokus statt Chaos</div>
-      </div>
-    </div>
-    <div class="device"><div class="device-frame"><img src="IMG_0934.png" alt="Aufgaben"></div></div>
-  </div>
-
-  <div class="story reverse reveal">
-    <div class="story-text">
-      <span>NEXSHOP</span>
-      <h2>Einkaufen, Gerichte und Planung verbunden.</h2>
-      <p>
-        NexShop verbindet Einkaufsliste, Gerichte, Mengen, Kategorien und Meal Planner.
-        Zutaten können direkt aus Rezepten oder geplanten Gerichten übernommen werden.
-      </p>
-      <p>
-        Weniger vergessen. Weniger doppelt kaufen. Mehr Struktur beim Einkaufen.
-      </p>
-      <div class="points">
-        <div>✓ Einkaufslisten</div>
-        <div>✓ Meine Gerichte</div>
-        <div>✓ Einkaufsmodus</div>
-        <div>✓ Zutaten automatisch nutzen</div>
-      </div>
-    </div>
-    <div class="device"><div class="device-frame"><img src="IMG_0936.png" alt="NexShop"></div></div>
-  </div>
-
-  <div class="story reveal">
-    <div class="story-text">
-      <span>MEAL PLANNER</span>
-      <h2>Plane deine Woche smarter.</h2>
-      <p>
-        Plane Mahlzeiten für einzelne Tage und übertrage Zutaten direkt in deine Einkaufsliste.
-        Perfekt für Alltag, Familie, Fitness oder Wochenplanung.
-      </p>
-      <p>
-        So wird aus Essensplanung ein klarer Workflow.
-      </p>
-      <div class="points">
-        <div>✓ Gerichte planen</div>
-        <div>✓ Portionen</div>
-        <div>✓ Zutaten zur Liste</div>
-        <div>✓ Wochenübersicht</div>
-      </div>
-    </div>
-    <div class="device"><div class="device-frame"><img src="IMG_0941.png" alt="Meal Planner"></div></div>
-  </div>
-
-  <div class="story reverse reveal">
-    <div class="story-text">
-      <span>COOK MODE</span>
-      <h2>Kochen ohne App-Wechsel.</h2>
-      <p>
-        Der Kochmodus führt dich Schritt für Schritt durch dein Rezept.
-        Timer, Fortschritt und nächste Schritte sind direkt integriert.
-      </p>
-      <p>
-        Dadurch bleibt Kochen konzentriert, ruhig und deutlich angenehmer.
-      </p>
-      <div class="points">
-        <div>✓ Schritt-für-Schritt</div>
-        <div>✓ Timer integriert</div>
-        <div>✓ Fortschrittsanzeige</div>
-        <div>✓ Fokus beim Kochen</div>
-      </div>
-    </div>
-    <div class="device"><div class="device-frame"><img src="IMG_0951.png" alt="Kochmodus"></div></div>
-  </div>
-
-</section>
-
-<section class="section reveal" id="screens">
-  <div class="center">
-    <h2>Professionelle App Screens.</h2>
-    <p>
-      Jede Ansicht wurde so gestaltet, dass sie sich modern, ruhig und hochwertig anfühlt —
-      mit klaren Cards, schönen Farben und starkem Dark UI.
-    </p>
-  </div>
-
-  <div class="showcase-grid">
-    <div class="showcase-card"><img src="IMG_0935.png"><div class="caption"><h3>Kalender</h3><p>Monatsübersicht, Termine und Tagesplanung in einer klaren Oberfläche.</p></div></div>
-    <div class="showcase-card"><img src="IMG_0937.png"><div class="caption"><h3>Meine Gerichte</h3><p>Rezepte verwalten und Zutaten direkt zur Einkaufsliste hinzufügen.</p></div></div>
-    <div class="showcase-card"><img src="IMG_0940.png"><div class="caption"><h3>Einkaufsmodus</h3><p>Große Ansicht zum schnellen Abhaken im Laden.</p></div></div>
-    <div class="showcase-card"><img src="IMG_0942.png"><div class="caption"><h3>Notizen</h3><p>Ideen und wichtige Infos nach Kategorien sortieren.</p></div></div>
-    <div class="showcase-card"><img src="IMG_0931.png"><div class="caption"><h3>Branding</h3><p>NexDay wirkt als klare, eigenständige Premium-App-Marke.</p></div></div>
-    <div class="showcase-card"><img src="IMG_0932.png"><div class="caption"><h3>Home</h3><p>Der wichtigste Tagesstatus auf einen Blick.</p></div></div>
-  </div>
-</section>
-
-<section class="section reveal" id="why">
-  <div class="center">
-    <h2>Warum NexDay?</h2>
-    <p>
-      Weil dein Alltag nicht aus vielen einzelnen Apps bestehen sollte.
-    </p>
-  </div>
-
-  <div class="compare">
-    <div class="compare-box bad">
-      <h3>Normale Apps</h3>
-      <ul>
-        <li>× Aufgaben getrennt vom Kalender</li>
-        <li>× Einkaufslisten ohne Rezepte</li>
-        <li>× Kein Meal Planner</li>
-        <li>× Kein Kochmodus</li>
-        <li>× Zu viele einzelne Tools</li>
-      </ul>
-    </div>
-
-    <div class="compare-box good">
-      <h3>NexDay</h3>
-      <ul>
-        <li>✓ Aufgaben, Kalender, Shop und Notizen</li>
-        <li>✓ Gerichte und Einkauf verbunden</li>
-        <li>✓ Meal Planner mit Zutatenlogik</li>
-        <li>✓ Kochmodus mit Timer</li>
-        <li>✓ Ein Premium-System für deinen Alltag</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="cta reveal" id="download">
-  <h2>Bereit für deinen nächsten Tag?</h2>
-  <p>
-    NexDay kommt bald. Eine App für mehr Klarheit, Struktur und Fokus im Alltag.
-  </p>
-
-  <div>
-    <div class="store"><small>Bald im</small><b>App Store</b></div>
-    <div class="store"><small>Kontakt</small><b>Support</b></div>
-  </div>
-</section>
-
-<footer>
-  <strong>NexDay</strong>
-  <span><a href="mailto:support@getnexday.com">support@getnexday.com</a> · © 2026 NexDay</span>
-</footer>
-
-<script>
-const observer=new IntersectionObserver((entries)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add("show")}
-})
-},{threshold:.12})
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el))
-
-document.addEventListener("mousemove",e=>{
-const x=(e.clientX/window.innerWidth-.5)*16
-const y=(e.clientY/window.innerHeight-.5)*16
-document.querySelectorAll(".phone,.device-frame,.showcase-card,.tile").forEach((el,i)=>{
-el.style.transform=`translate(${x/(i+7)}px,${y/(i+7)}px)`
-})
-})
-</script>
-
-</body>
-</html>
-<!-- UPDATE -->
