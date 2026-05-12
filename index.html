@@ -978,4 +978,274 @@ Features ansehen
 
 </div>
 
-<div class="
+<div class="hero-right reveal">
+
+<div class="hero-glow"></div>
+
+<div class="device-stack">
+
+<div class="float-card fc1">
+Live synchronisiert
+</div>
+
+<div class="float-card fc2">
+Meal Planner aktiv
+</div>
+
+<div class="float-card fc3">
+Heute im Blick
+</div>
+
+<div class="macbook">
+
+<div class="macbook-frame">
+<img src="IMG_0931.png" alt="">
+</div>
+
+<div class="macbook-bottom"></div>
+
+</div>
+
+<div class="ipad">
+
+<div class="ipad-frame">
+<img src="IMG_0941.png" alt="">
+</div>
+
+</div>
+
+<div class="phone">
+
+<div class="dynamic-island"></div>
+
+<div class="phone-frame">
+<img src="IMG_0932.png" alt="">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section reveal" id="features">
+
+<div class="center">
+
+<h2>Mehr als Produktivität.</h2>
+
+<p>
+NexDay ist keine normale To-do-App.
+Es ist ein modernes Alltagssystem,
+das Planung, Einkauf, Kochen und Fokus intelligent verbindet.
+</p>
+
+</div>
+
+<div class="bento">
+
+<div class="card">
+<div class="icon">✓</div>
+<h3>Aufgaben</h3>
+<p>Plane deinen Tag mit weniger Ablenkung und mehr Fokus.</p>
+</div>
+
+<div class="card">
+<div class="icon">▣</div>
+<h3>Kalender</h3>
+<p>Premium Monatsübersicht mit Kategorien und smarter Planung.</p>
+</div>
+
+<div class="card">
+<div class="icon">🛒</div>
+<h3>NexShop</h3>
+<p>Gemeinsame Einkaufslisten mit Live Sync und Einladungscode.</p>
+</div>
+
+<div class="card">
+<div class="icon">✎</div>
+<h3>Notizen</h3>
+<p>Gedanken, Ideen und wichtige Infos im Alltagssystem speichern.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="devices-section reveal" id="ecosystem">
+
+<div class="ecosystem">
+
+<h2>
+NexDay auf all deinen Geräten.
+</h2>
+
+<p>
+Vom schnellen Einkauf auf dem Smartphone
+bis zur Wochenplanung am Desktop —
+NexDay fühlt sich überall modern,
+ruhig und synchronisiert an.
+</p>
+
+<div class="device-row">
+
+<div class="mini-device md-phone">
+<img src="IMG_0932.png" alt="">
+</div>
+
+<div class="mini-device md-tablet">
+<img src="IMG_0941.png" alt="">
+</div>
+
+<div class="mini-device md-desktop">
+<img src="IMG_0931.png" alt="">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section reveal" id="reviews">
+
+<div class="center">
+
+<h2>Menschen lieben Klarheit.</h2>
+
+<p>
+NexDay wurde entwickelt,
+damit sich Alltag wieder ruhiger,
+klarer und organisierter anfühlt.
+</p>
+
+</div>
+
+<div class="testimonials">
+
+<div class="testimonial">
+
+<p>
+„Endlich fühlt sich Planung nicht mehr chaotisch an.
+NexDay wirkt wie eine einzige ruhige Oberfläche für meinen Alltag.“
+</p>
+
+<div class="user">
+<div class="avatar"></div>
+
+<div>
+<strong>Lisa</strong>
+<span>Meal Planning</span>
+</div>
+</div>
+
+</div>
+
+<div class="testimonial">
+
+<p>
+„Die gemeinsame Einkaufsliste ist absurd gut.
+Live Sync macht wirklich einen Unterschied.“
+</p>
+
+<div class="user">
+<div class="avatar"></div>
+
+<div>
+<strong>Max</strong>
+<span>NexShop</span>
+</div>
+</div>
+
+</div>
+
+<div class="testimonial">
+
+<p>
+„Fühlt sich wie eine Mischung aus Apple,
+Notion und einem echten Alltagssystem an.“
+</p>
+
+<div class="user">
+<div class="avatar"></div>
+
+<div>
+<strong>Daniel</strong>
+<span>Daily Planning</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="launch reveal" id="download">
+
+<div class="launch-card">
+
+<h2>
+Werde Teil von NexDay.
+</h2>
+
+<p>
+Erhalte früher Zugriff auf die Beta,
+neue Features und Updates zum Launch.
+</p>
+
+<form class="waitlist">
+
+<input type="email" placeholder="E-Mail Adresse">
+
+<button type="submit">
+Zur Warteliste
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<footer>
+
+<strong>NexDay</strong>
+
+<span>
+support@getnexday.com · © 2026 NexDay
+</span>
+
+</footer>
+
+<script>
+
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+},{
+threshold:.12
+})
+
+document.querySelectorAll(".reveal").forEach(el=>{
+observer.observe(el)
+})
+
+const glow=document.getElementById("glow")
+
+window.addEventListener("mousemove",(e)=>{
+
+glow.style.left=e.clientX+"px"
+glow.style.top=e.clientY+"px"
+
+})
+
+</script>
+
+</body>
+</html>
