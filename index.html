@@ -16,16 +16,16 @@
 <style>
 :root{
 --bg:#030306;
---card:rgba(255,255,255,.06);
---card2:rgba(255,255,255,.09);
---border:rgba(255,255,255,.13);
+--card:rgba(255,255,255,.065);
+--card2:rgba(255,255,255,.1);
+--border:rgba(255,255,255,.14);
 --text:#fff;
 --muted:#aeb8ca;
 --orange:#ff8a00;
 --cyan:#00e5ff;
 --purple:#8b5cf6;
 --green:#52ffb8;
---shadow:0 40px 140px rgba(0,0,0,.7);
+--shadow:0 45px 160px rgba(0,0,0,.75);
 }
 
 *{
@@ -62,8 +62,8 @@ inset:0;
 z-index:-10;
 background:
 radial-gradient(circle at 10% 8%,rgba(255,138,0,.55),transparent 30%),
-radial-gradient(circle at 90% 10%,rgba(0,229,255,.35),transparent 32%),
-radial-gradient(circle at 50% 95%,rgba(139,92,246,.45),transparent 38%),
+radial-gradient(circle at 90% 10%,rgba(0,229,255,.36),transparent 32%),
+radial-gradient(circle at 50% 96%,rgba(139,92,246,.48),transparent 38%),
 #030306;
 }
 
@@ -286,82 +286,49 @@ filter:blur(130px);
 opacity:.45;
 }
 
-.device-stack{
+.phone-cluster{
 position:relative;
-width:720px;
+width:600px;
 height:650px;
 }
 
-.macbook{
+.hero-phone{
 position:absolute;
-width:520px;
-top:40px;
-left:100px;
-transform:rotate(-5deg);
-z-index:1;
-}
-
-.macbook-frame,
-.ipad-frame,
-.phone-frame,
-.mini-device,
-.screen-phone{
-background:linear-gradient(145deg,rgba(255,255,255,.55),rgba(255,255,255,.06));
-border:1px solid rgba(255,255,255,.16);
+width:235px;
+padding:8px;
+border-radius:48px;
+background:linear-gradient(145deg,rgba(255,255,255,.6),rgba(255,255,255,.08));
+border:1px solid rgba(255,255,255,.18);
 box-shadow:var(--shadow);
 }
 
-.macbook-frame{
-padding:12px;
-border-radius:28px;
+.hero-phone img{
+border-radius:40px;
+width:100%;
+aspect-ratio:9/19;
+object-fit:cover;
 }
 
-.macbook-frame img{
-border-radius:18px;
+.hero-phone.main{
+left:50%;
+top:40px;
+transform:translateX(-50%);
+z-index:3;
+width:270px;
 }
 
-.macbook-bottom{
-width:620px;
-height:18px;
-margin:auto;
-border-radius:0 0 20px 20px;
-background:linear-gradient(180deg,#9ca3af,#6b7280);
-}
-
-.ipad{
-position:absolute;
-width:280px;
-left:40px;
-top:240px;
-transform:rotate(-12deg);
+.hero-phone.left{
+left:20px;
+top:150px;
+transform:rotate(-10deg);
 z-index:2;
 }
 
-.ipad-frame{
-padding:10px;
-border-radius:36px;
-}
-
-.ipad-frame img{
-border-radius:28px;
-}
-
-.phone{
-position:absolute;
-width:230px;
-right:40px;
-bottom:20px;
-transform:rotate(8deg);
-z-index:3;
-}
-
-.phone-frame{
-padding:8px;
-border-radius:48px;
-}
-
-.phone-frame img{
-border-radius:40px;
+.hero-phone.right{
+right:20px;
+top:170px;
+transform:rotate(10deg);
+z-index:2;
 }
 
 .dynamic-island{
@@ -373,7 +340,7 @@ width:90px;
 height:28px;
 border-radius:999px;
 background:#000;
-z-index:4;
+z-index:5;
 }
 
 .float-card{
@@ -385,11 +352,12 @@ border:1px solid rgba(255,255,255,.13);
 backdrop-filter:blur(30px);
 font-weight:900;
 box-shadow:0 24px 80px rgba(0,0,0,.45);
+z-index:6;
 }
 
-.fc1{top:80px;right:0;}
-.fc2{left:0;bottom:120px;color:#7fffe2;}
-.fc3{right:120px;bottom:-20px;color:#ffd39a;}
+.fc1{top:70px;right:0;}
+.fc2{left:0;bottom:130px;color:#7fffe2;}
+.fc3{right:90px;bottom:40px;color:#ffd39a;}
 
 .section{
 padding:110px 7vw;
@@ -496,6 +464,8 @@ transform:translateY(-12px) scale(1.01);
 padding:8px;
 border-radius:42px;
 margin-bottom:22px;
+background:linear-gradient(145deg,rgba(255,255,255,.55),rgba(255,255,255,.06));
+border:1px solid rgba(255,255,255,.16);
 }
 
 .screen-phone img{
@@ -598,15 +568,21 @@ flex-wrap:wrap;
 .mini-device{
 padding:10px;
 border-radius:36px;
+background:linear-gradient(145deg,rgba(255,255,255,.45),rgba(255,255,255,.06));
+border:1px solid rgba(255,255,255,.16);
+box-shadow:var(--shadow);
 }
 
 .mini-device img{
 border-radius:28px;
+width:100%;
+aspect-ratio:9/19;
+object-fit:cover;
 }
 
 .md-phone{width:200px;}
-.md-tablet{width:280px;}
-.md-desktop{width:420px;}
+.md-tablet{width:240px;}
+.md-desktop{width:280px;}
 
 .testimonials{
 display:grid;
@@ -771,8 +747,8 @@ margin-right:auto;
 justify-content:center;
 }
 
-.device-stack{
-transform:scale(.8);
+.phone-cluster{
+transform:scale(.82);
 }
 
 .bento{
@@ -823,9 +799,9 @@ padding:80px 22px;
 grid-template-columns:1fr;
 }
 
-.device-stack{
-transform:scale(.58);
-height:440px;
+.phone-cluster{
+transform:scale(.6);
+height:430px;
 }
 
 .launch-card,
@@ -907,30 +883,25 @@ Eine App für Planung, Einkauf, Essen und Alltag.
 
 <div class="hero-glow"></div>
 
-<div class="device-stack">
+<div class="phone-cluster">
 
 <div class="float-card fc1">Live synchronisiert</div>
 <div class="float-card fc2">Meal Planner aktiv</div>
 <div class="float-card fc3">Heute im Blick</div>
 
-<div class="macbook">
-<div class="macbook-frame">
-<img src="IMG_0931.png" alt="NexDay Desktop Ansicht">
-</div>
-<div class="macbook-bottom"></div>
-</div>
-
-<div class="ipad">
-<div class="ipad-frame">
-<img src="IMG_0941.png" alt="NexDay Tablet Ansicht">
-</div>
-</div>
-
-<div class="phone">
+<div class="hero-phone left">
 <div class="dynamic-island"></div>
-<div class="phone-frame">
-<img src="IMG_0932.png" alt="NexDay Smartphone Ansicht">
+<img src="aufgabennexday2.png" alt="NexDay Aufgaben">
 </div>
+
+<div class="hero-phone main">
+<div class="dynamic-island"></div>
+<img src="homenexday.png" alt="NexDay Home Dashboard">
+</div>
+
+<div class="hero-phone right">
+<div class="dynamic-island"></div>
+<img src="nexshop2.png" alt="NexShop Einkaufsliste">
 </div>
 
 </div>
@@ -981,7 +952,7 @@ das Planung, Einkauf, Kochen, Notizen und Fokus intelligent verbindet.
 <div class="center">
 <h2>NexDay in Bildern.</h2>
 <p>
-Die wichtigsten Bereiche deiner App — modern, klar und auf echte Alltagssituationen optimiert.
+Alle wichtigen Bereiche deiner App — modern, klar und auf echte Alltagssituationen optimiert.
 </p>
 </div>
 
@@ -989,50 +960,122 @@ Die wichtigsten Bereiche deiner App — modern, klar und auf echte Alltagssituat
 
 <div class="screen-card">
 <div class="screen-phone">
-<img src="IMG_0932.png" alt="NexDay Home Dashboard" loading="lazy">
+<img src="launchnexday.png" alt="NexDay Launch Screen" loading="lazy">
+</div>
+<h3>Willkommen bei NexDay</h3>
+<p>Ein hochwertiger Einstieg in dein persönliches Alltagssystem.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="homenexday.png" alt="NexDay Home Dashboard" loading="lazy">
 </div>
 <h3>Home Dashboard</h3>
-<p>Dein Tag auf einen Blick: Aufgaben, Termine, Wetter und Listen werden intelligent zusammengefasst.</p>
+<p>Aufgaben, Termine, Wetter und Einkaufslisten auf einen Blick.</p>
 </div>
 
 <div class="screen-card">
 <div class="screen-phone">
-<img src="IMG_0933.png" alt="NexDay Aufgaben" loading="lazy">
+<img src="aufgabennexday1.png" alt="NexDay Aufgaben Übersicht" loading="lazy">
 </div>
-<h3>Aufgaben</h3>
-<p>Plane Aufgaben nach Tagen, verfolge deinen Fortschritt und bleibe fokussiert.</p>
+<h3>Aufgabenplanung</h3>
+<p>Plane deinen Tag klar, ruhig und übersichtlich.</p>
 </div>
 
 <div class="screen-card">
 <div class="screen-phone">
-<img src="IMG_0934.png" alt="NexDay Kalender" loading="lazy">
+<img src="aufgabennexday2.png" alt="NexDay Geplante Aufgaben" loading="lazy">
+</div>
+<h3>Geplante Aufgaben</h3>
+<p>Behalte offene, erledigte und geplante Aufgaben jederzeit im Blick.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="kalendernexday.png" alt="NexDay Kalender" loading="lazy">
 </div>
 <h3>Kalender</h3>
-<p>Eine klare Monatsansicht für Termine, freie Tage, Feiertage und Planung.</p>
+<p>Termine, freie Tage und Feiertage in einer modernen Monatsansicht.</p>
 </div>
 
 <div class="screen-card">
 <div class="screen-phone">
-<img src="IMG_0935.png" alt="NexDay Notizen" loading="lazy">
+<img src="kalendernexday1.png" alt="NexDay Terminplanung" loading="lazy">
+</div>
+<h3>Terminplanung</h3>
+<p>Erstelle und verwalte Termine schnell, elegant und übersichtlich.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="notizennexday.png" alt="NexDay Notizen" loading="lazy">
 </div>
 <h3>Notizen</h3>
-<p>Gedanken, Ideen und Informationen mit Kategorien, Pins und Suche speichern.</p>
+<p>Ideen, Gedanken und wichtige Informationen strukturiert speichern.</p>
 </div>
 
 <div class="screen-card">
 <div class="screen-phone">
-<img src="IMG_0936.png" alt="NexShop Einkaufsliste" loading="lazy">
+<img src="notizennexday1.png" alt="NexDay Notiz Editor" loading="lazy">
+</div>
+<h3>Notiz Editor</h3>
+<p>Bearbeite Notizen mit Formatierungen, Farben und klarer Struktur.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="nexshop2.png" alt="NexShop Übersicht" loading="lazy">
 </div>
 <h3>NexShop</h3>
-<p>Intelligente Einkaufslisten gemeinsam nutzen, teilen und live synchronisieren.</p>
+<p>Intelligente Einkaufslisten für Alltag, Familie und Planung.</p>
 </div>
 
 <div class="screen-card">
 <div class="screen-phone">
-<img src="IMG_0937.png" alt="NexDay Meal Planner" loading="lazy">
+<img src="nexshop1.png" alt="NexShop Listen teilen" loading="lazy">
+</div>
+<h3>Gemeinsame Listen</h3>
+<p>Teile Einkaufslisten mit anderen Personen und arbeite live zusammen.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="nexshop3.png" alt="NexShop Meal Planner" loading="lazy">
 </div>
 <h3>Meal Planner</h3>
-<p>Plane Gerichte und übertrage Zutaten automatisch in deine Einkaufsliste.</p>
+<p>Plane Mahlzeiten pro Tag und verbinde sie mit deiner Einkaufsliste.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="nexshop4.png" alt="NexShop Rezept Details" loading="lazy">
+</div>
+<h3>Rezept Details</h3>
+<p>Zutaten, Portionen und Kochschritte übersichtlich verwalten.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="nexshop5.png" alt="NexShop Kochmodus" loading="lazy">
+</div>
+<h3>Kochmodus</h3>
+<p>Schritt-für-Schritt kochen mit Timer und Fortschrittsanzeige.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="nexshop6.png" alt="NexShop Einkaufsmodus" loading="lazy">
+</div>
+<h3>Einkaufsmodus</h3>
+<p>Große Karten und schnelles Abhaken direkt im Supermarkt.</p>
+</div>
+
+<div class="screen-card">
+<div class="screen-phone">
+<img src="home2nexday.png" alt="NexDay Premium Home Ansicht" loading="lazy">
+</div>
+<h3>Premium Übersicht</h3>
+<p>Alles verbunden: Planung, Einkauf, Essen und Organisation in einer App.</p>
 </div>
 
 </div>
@@ -1059,7 +1102,7 @@ Du planst dein Essen, startest den Kochmodus und hast alles automatisch organisi
 
 <div class="screen-card">
 <div class="screen-phone">
-<img src="IMG_0941.png" alt="NexDay Rezept und Kochmodus" loading="lazy">
+<img src="nexshop5.png" alt="NexDay Kochmodus" loading="lazy">
 </div>
 <h3>Kochmodus</h3>
 <p>Interaktive Schritte, Timer und klare Anzeige beim Kochen.</p>
@@ -1082,15 +1125,15 @@ NexDay fühlt sich überall modern, ruhig und synchronisiert an.
 <div class="device-row">
 
 <div class="mini-device md-phone">
-<img src="IMG_0932.png" alt="NexDay Smartphone" loading="lazy">
+<img src="homenexday.png" alt="NexDay Smartphone" loading="lazy">
 </div>
 
 <div class="mini-device md-tablet">
-<img src="IMG_0941.png" alt="NexDay Tablet" loading="lazy">
+<img src="nexshop3.png" alt="NexDay Meal Planner" loading="lazy">
 </div>
 
 <div class="mini-device md-desktop">
-<img src="IMG_0931.png" alt="NexDay Desktop" loading="lazy">
+<img src="home2nexday.png" alt="NexDay Übersicht" loading="lazy">
 </div>
 
 </div>
