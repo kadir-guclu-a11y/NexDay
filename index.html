@@ -741,66 +741,42 @@ Starte bald mit NexDay und verbinde Aufgaben, Kalender, Einkauf, Rezepte und Not
 </div>
 </section>
 
+<<section class="section reveal" id="trust">
+  <div class="section-title">
+    <div class="eyebrow">Datenschutz</div>
+    <h2>Deine Daten bleiben geschützt.</h2>
+    <p>
+      NexDay nutzt Firebase, Apple Sign In und Push-Benachrichtigungen,
+      um deine App-Erfahrung sicher und synchron zu halten.
+    </p>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature">
+      <h3>Apple Sign In</h3>
+      <p>Melde dich sicher mit deinem Apple Account an.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Push Notifications</h3>
+      <p>Erhalte Erinnerungen für Aufgaben, Termine und wichtige Updates.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Konto löschen</h3>
+      <p>Du kannst dein Konto jederzeit direkt in der App löschen.</p>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
-<div>© 2026 NexDay — Designed with Apple-like Motion & UI</div>
+  <div>© 2026 NexDay — Designed with Apple-like Motion & UI</div>
 
-<div class="footer-links">
-<a href="impressum.html">Impressum</a>
-<a href="datenschutz.html">Datenschutz</a>
-<a href="mailto:hello@nexday.app">Kontakt</a>
-</div>
+  <div class="footer-links">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="support.html">Support</a>
+    <a href="konto-loeschen.html">Konto löschen</a>
+    <a href="mailto:support@getnexday.com">Kontakt</a>
+  </div>
 </footer>
-
-<script>
-const reveals=document.querySelectorAll(".reveal");
-
-function reveal(){
-reveals.forEach(el=>{
-const top=el.getBoundingClientRect().top;
-
-if(top<window.innerHeight-120){
-el.classList.add("active");
-}
-});
-}
-
-window.addEventListener("scroll",reveal);
-reveal();
-
-document.querySelectorAll(".card").forEach(card=>{
-card.addEventListener("mousemove",e=>{
-const rect=card.getBoundingClientRect();
-
-const x=e.clientX-rect.left;
-const y=e.clientY-rect.top;
-
-const rotateY=((x/rect.width)-0.5)*8;
-const rotateX=((y/rect.height)-0.5)*-8;
-
-card.style.transform=
-`perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-});
-
-card.addEventListener("mouseleave",()=>{
-card.style.transform="";
-});
-});
-
-const menuBtn=document.getElementById("menuBtn");
-const menu=document.getElementById("menu");
-
-menuBtn.addEventListener("click",()=>{
-menu.classList.toggle("active");
-menuBtn.textContent=menu.classList.contains("active") ? "×" : "☰";
-});
-
-document.querySelectorAll("nav a").forEach(link=>{
-link.addEventListener("click",()=>{
-menu.classList.remove("active");
-menuBtn.textContent="☰";
-});
-});
-</script>
-
-</body>
-</html>
