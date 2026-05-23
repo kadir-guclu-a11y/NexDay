@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>NexDay Ultra</title>
+<meta name="description" content="NexDay organisiert Kalender, Aufgaben, Einkauf, Meal Planning und Notizen in einer modernen Premium-App." />
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -41,7 +41,7 @@ left:50%;
 transform:translateX(-50%);
 width:min(1200px,calc(100% - 30px));
 height:72px;
-background:rgba(10,14,24,.55);
+background:rgba(10,14,24,.62);
 backdrop-filter:blur(24px);
 border:1px solid rgba(255,255,255,.08);
 border-radius:999px;
@@ -83,6 +83,15 @@ nav a:hover{
 color:white;
 }
 
+.menu-btn{
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:28px;
+cursor:pointer;
+}
+
 .hero{
 min-height:100vh;
 display:flex;
@@ -119,7 +128,7 @@ color:transparent;
 }
 
 .hero p{
-max-width:760px;
+max-width:780px;
 margin:34px auto;
 font-size:clamp(19px,2vw,26px);
 line-height:1.5;
@@ -142,6 +151,7 @@ border-radius:999px;
 font-weight:800;
 text-decoration:none;
 transition:.35s;
+display:inline-block;
 }
 
 .primary{
@@ -229,7 +239,6 @@ transform-style:preserve-3d;
 }
 
 .card:hover{
-transform:translateY(-10px) rotateX(2deg) rotateY(-2deg);
 box-shadow:0 30px 90px rgba(0,0,0,.45);
 }
 
@@ -256,10 +265,128 @@ color:rgba(255,255,255,.62);
 grid-column:span 2;
 }
 
+.feature-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.feature{
+padding:32px;
+border-radius:34px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.feature h3{
+font-size:26px;
+margin-bottom:12px;
+}
+
+.feature p{
+color:rgba(255,255,255,.62);
+line-height:1.6;
+}
+
+.testimonials{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.quote{
+padding:32px;
+border-radius:34px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.quote p{
+color:rgba(255,255,255,.7);
+line-height:1.6;
+margin-bottom:20px;
+}
+
+.quote strong{
+color:white;
+}
+
+.faq{
+max-width:900px;
+margin:auto;
+display:grid;
+gap:16px;
+}
+
+.faq-item{
+padding:28px;
+border-radius:28px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.faq-item h3{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.faq-item p{
+color:rgba(255,255,255,.62);
+line-height:1.6;
+}
+
+.cta{
+max-width:1100px;
+margin:auto;
+padding:80px 30px;
+border-radius:50px;
+text-align:center;
+background:
+radial-gradient(circle at top,rgba(245,176,65,.22),transparent 40%),
+rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.1);
+}
+
+.cta h2{
+font-size:clamp(42px,7vw,86px);
+line-height:.95;
+letter-spacing:-4px;
+margin-bottom:24px;
+}
+
+.cta p{
+font-size:22px;
+color:rgba(255,255,255,.65);
+max-width:720px;
+margin:0 auto 34px;
+line-height:1.6;
+}
+
 .footer{
 padding:60px 24px;
 text-align:center;
 color:rgba(255,255,255,.4);
+}
+
+.footer-links{
+margin-top:18px;
+display:flex;
+justify-content:center;
+gap:22px;
+flex-wrap:wrap;
+}
+
+.footer-links a{
+color:rgba(255,255,255,.55);
+text-decoration:none;
+}
+
+.footer-links a:hover{
+color:white;
 }
 
 .reveal{
@@ -286,28 +413,52 @@ pointer-events:none;
 }
 
 @keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 @keyframes float{
-0%,100%{
-transform:translateY(0px);
-}
-50%{
-transform:translateY(-16px);
-}
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-16px);}
 }
 
 @media(max-width:950px){
+nav{
+height:auto;
+border-radius:32px;
+}
 
-.showcase{
+.nav-inner{
+padding:20px 24px;
+align-items:flex-start;
+}
+
+.menu-btn{
+display:block;
+}
+
+nav ul{
+display:none;
+position:absolute;
+top:76px;
+left:0;
+right:0;
+padding:24px;
+background:rgba(10,14,24,.95);
+backdrop-filter:blur(24px);
+border-radius:28px;
+flex-direction:column;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+}
+
+nav ul.active{
+display:flex;
+}
+
+.showcase,
+.feature-grid,
+.testimonials{
 grid-template-columns:1fr;
 }
 
@@ -315,26 +466,30 @@ grid-template-columns:1fr;
 grid-column:span 1;
 }
 
-.hero h1{
+.hero h1,
+.section-title h2,
+.cta h2{
 letter-spacing:-3px;
 }
-
 }
-
 </style>
 </head>
+
 <body>
 
 <nav>
 <div class="nav-inner">
 <div class="logo">Nex<span>Day</span></div>
 
-<ul>
+<button class="menu-btn" id="menuBtn">☰</button>
+
+<ul id="menu">
 <li><a href="#homeview">HomeView</a></li>
 <li><a href="#aufgaben">Aufgaben</a></li>
 <li><a href="#kalender">Kalender</a></li>
 <li><a href="#nexshop">NexShop</a></li>
 <li><a href="#notizen">Notizen</a></li>
+<li><a href="#faq">FAQ</a></li>
 </ul>
 </div>
 </nav>
@@ -345,137 +500,160 @@ letter-spacing:-3px;
 <h1>Dein Alltag.<br><span>Neu organisiert.</span></h1>
 
 <p>
-Kalender. Aufgaben. Einkauf. Meal Planning. Notizen.
-Alles in einer einzigen Premium Experience.
+NexDay vereint Kalender, Aufgaben, Einkaufslisten, Meal Planning und Notizen
+in einer einzigen modernen Premium-App.
 </p>
 
 <div class="buttons">
-<a href="#" class="btn primary">App Store</a>
+<a href="#" class="btn primary">Bald im App Store</a>
 <a href="#homeview" class="btn secondary">Entdecken</a>
 </div>
 
 <div class="hero-device">
-<img src="IMG_1263.jpeg" alt="NexDay HomeView">
+<img src="IMG_1263.jpeg" alt="NexDay HomeView Dashboard auf einem Apple Gerät">
+</div>
+</section>
+
+<section class="section reveal">
+<div class="section-title">
+<div class="eyebrow">Warum NexDay?</div>
+<h2>Eine App statt fünf.</h2>
+<p>
+Alles, was du für deinen Tag brauchst, ist intelligent miteinander verbunden.
+</p>
+</div>
+
+<div class="feature-grid">
+<div class="feature">
+<h3>Kalender</h3>
+<p>Plane Termine, Geburtstage und Erinnerungen übersichtlich an einem Ort.</p>
+</div>
+
+<div class="feature">
+<h3>Aufgaben</h3>
+<p>Organisiere deinen Tag mit Prioritäten, Fokus und klarer Struktur.</p>
+</div>
+
+<div class="feature">
+<h3>NexShop</h3>
+<p>Einkaufslisten, Rezepte und Meal Planning funktionieren nahtlos zusammen.</p>
+</div>
+
+<div class="feature">
+<h3>Notizen</h3>
+<p>Halte Gedanken, Ideen und wichtige Informationen sofort fest.</p>
+</div>
+
+<div class="feature">
+<h3>Realtime Sync</h3>
+<p>Änderungen erscheinen sofort auf allen verbundenen Geräten.</p>
+</div>
+
+<div class="feature">
+<h3>Premium UI</h3>
+<p>Eine ruhige, moderne Oberfläche mit Apple-inspirierter Bedienung.</p>
+</div>
 </div>
 </section>
 
 <section class="section reveal" id="homeview">
-
 <div class="section-title">
 <div class="eyebrow">HomeView</div>
-<h2>Alles wichtige sofort sichtbar.</h2>
+<h2>Alles Wichtige sofort sichtbar.</h2>
 <p>
-Dein zentrales Dashboard verbindet Aufgaben,
-Kalender, Einkaufslisten und Tagesplanung in einer modernen Übersicht.
+Dein zentrales Dashboard verbindet Aufgaben, Kalender, Einkaufslisten und Tagesplanung.
 </p>
 </div>
 
 <div class="showcase">
-
 <div class="card large">
 <div class="glow"></div>
 <h3>HomeView</h3>
-<p>
-Die komplette NexDay Experience in einem intelligenten Startscreen.
-</p>
-<img src="IMG_1263.jpeg" alt="">
+<p>Die komplette NexDay Experience in einem intelligenten Startscreen.</p>
+<img src="IMG_1263.jpeg" alt="NexDay HomeView Übersicht">
 </div>
-
 </div>
 </section>
 
 <section class="section reveal" id="aufgaben">
-
 <div class="section-title">
 <div class="eyebrow">Aufgaben</div>
-<h2>Fokus der mitdenkt.</h2>
+<h2>Fokus, der mitdenkt.</h2>
 <p>
-Prioritäten, Tagesstruktur und intelligente Organisation
-für einen produktiveren Alltag.
+Prioritäten, Tagesstruktur und intelligente Organisation für einen produktiveren Alltag.
 </p>
 </div>
 
 <div class="showcase">
-
 <div class="card">
 <h3>Aufgaben</h3>
 <p>Plane deinen Tag smarter mit klaren Prioritäten.</p>
-<img src="IMG_1264.jpeg" alt="">
+<img src="IMG_1264.jpeg" alt="NexDay Aufgaben Ansicht">
 </div>
 
 <div class="card">
 <h3>Realtime Fortschritt</h3>
 <p>Alle Änderungen synchronisieren sich sofort auf allen Geräten.</p>
-<img src="IMG_1264.jpeg" alt="">
+<img src="IMG_1264.jpeg" alt="NexDay Aufgaben Fortschritt">
 </div>
-
 </div>
 </section>
 
 <section class="section reveal" id="kalender">
-
 <div class="section-title">
 <div class="eyebrow">Kalender</div>
 <h2>Dein Tag perfekt organisiert.</h2>
 <p>
-Geburtstage, Termine, Erinnerungen und Tagesplanung
-in einer ruhigen modernen UI.
+Geburtstage, Termine, Erinnerungen und Tagesplanung in einer ruhigen modernen UI.
 </p>
 </div>
 
 <div class="showcase">
-
 <div class="card">
 <h3>Kalender Übersicht</h3>
 <p>Elegant und schnell optimiert für iPhone und iPad.</p>
-<img src="IMG_1265.jpeg" alt="">
+<img src="IMG_1265.jpeg" alt="NexDay Kalender Übersicht">
 </div>
 
 <div class="card">
 <h3>Smart Events</h3>
 <p>Automatische Geburtstage und intelligente Tagesplanung.</p>
-<img src="IMG_1266.jpeg" alt="">
+<img src="IMG_1266.jpeg" alt="NexDay Smart Events Ansicht">
 </div>
-
 </div>
 </section>
 
 <section class="section reveal" id="nexshop">
-
 <div class="section-title">
 <div class="eyebrow">NexShop</div>
 <h2>Gemeinsam einkaufen in Echtzeit.</h2>
 <p>
-Live synchronisierte Einkaufslisten,
-Meal Planning und Kochmodus in einer Experience.
+Live synchronisierte Einkaufslisten, Meal Planning und Kochmodus in einer Experience.
 </p>
 </div>
 
 <div class="showcase">
-
 <div class="card">
 <h3>NexShop</h3>
 <p>Gemeinsame Einkaufslisten mit Live Sync.</p>
-<img src="IMG_1267.jpeg" alt="">
+<img src="IMG_1267.jpeg" alt="NexDay NexShop Einkaufsliste">
 </div>
 
 <div class="card">
 <h3>Gerichte</h3>
 <p>Rezepte und Zutaten direkt mit NexShop verbunden.</p>
-<img src="IMG_1268.jpeg" alt="">
+<img src="IMG_1268.jpeg" alt="NexDay Gerichte und Rezepte">
 </div>
 
 <div class="card large">
 <h3>Kochmodus</h3>
 <p>Minimalistisch, fokussiert und perfekt beim Kochen.</p>
-<img src="IMG_1269.jpeg" alt="">
+<img src="IMG_1269.jpeg" alt="NexDay Kochmodus">
 </div>
-
 </div>
 </section>
 
 <section class="section reveal" id="notizen">
-
 <div class="section-title">
 <div class="eyebrow">Notizen</div>
 <h2>Gedanken sofort festhalten.</h2>
@@ -485,22 +663,95 @@ Moderne Realtime Notizen mit Premium UI und smarter Struktur.
 </div>
 
 <div class="showcase">
-
 <div class="card large">
 <h3>Notizen</h3>
 <p>Alles an einem Ort organisiert.</p>
-<img src="IMG_1270.jpeg" alt="">
+<img src="IMG_1270.jpeg" alt="NexDay Notizen Übersicht">
 </div>
-
 </div>
 </section>
 
-<div class="footer">
-© 2026 NexDay — Designed with Apple-like Motion & UI
+<section class="section reveal">
+<div class="section-title">
+<div class="eyebrow">Stimmen</div>
+<h2>Gemacht für moderne Organisation.</h2>
+<p>
+NexDay fühlt sich leicht, schnell und hochwertig an.
+</p>
 </div>
 
-<script>
+<div class="testimonials">
+<div class="quote">
+<p>„Endlich eine App, die Kalender, Aufgaben und Einkauf sinnvoll verbindet.“</p>
+<strong>Beta Nutzer</strong>
+</div>
 
+<div class="quote">
+<p>„Die Oberfläche fühlt sich extrem modern und ruhig an.“</p>
+<strong>iPhone Nutzer</strong>
+</div>
+
+<div class="quote">
+<p>„Meal Planning und Einkaufsliste zusammen sind genau das, was gefehlt hat.“</p>
+<strong>Testnutzerin</strong>
+</div>
+</div>
+</section>
+
+<section class="section reveal" id="faq">
+<div class="section-title">
+<div class="eyebrow">FAQ</div>
+<h2>Häufige Fragen.</h2>
+</div>
+
+<div class="faq">
+<div class="faq-item">
+<h3>Ist NexDay kostenlos?</h3>
+<p>Die finalen Preise werden zum App-Store-Launch bekannt gegeben.</p>
+</div>
+
+<div class="faq-item">
+<h3>Funktioniert NexDay auf iPhone und iPad?</h3>
+<p>Ja, NexDay ist für moderne Apple-Geräte optimiert.</p>
+</div>
+
+<div class="faq-item">
+<h3>Gibt es Realtime Sync?</h3>
+<p>Ja, Aufgaben, Einkaufslisten und Notizen sind auf Live-Synchronisierung ausgelegt.</p>
+</div>
+
+<div class="faq-item">
+<h3>Kommt NexDay in den App Store?</h3>
+<p>Ja, NexDay ist für den App-Store-Launch vorbereitet.</p>
+</div>
+</div>
+</section>
+
+<section class="section reveal">
+<div class="cta">
+<h2>Bereit, deinen Alltag neu zu organisieren?</h2>
+<p>
+Starte bald mit NexDay und verbinde Aufgaben, Kalender, Einkauf, Rezepte und Notizen in einer einzigen App.
+</p>
+
+<div class="buttons" style="margin-bottom:0;">
+<a href="#" class="btn primary">Bald im App Store</a>
+<a href="#homeview" class="btn secondary">Features ansehen</a>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div>© 2026 NexDay — Designed with Apple-like Motion & UI</div>
+
+<div class="footer-links">
+<a href="impressum.html">Impressum</a>
+<a href="datenschutz.html">Datenschutz</a>
+<a href="mailto:hello@nexday.app">Kontakt</a>
+</div>
+</footer>
+
+<script>
 const reveals=document.querySelectorAll(".reveal");
 
 function reveal(){
@@ -517,9 +768,7 @@ window.addEventListener("scroll",reveal);
 reveal();
 
 document.querySelectorAll(".card").forEach(card=>{
-
 card.addEventListener("mousemove",e=>{
-
 const rect=card.getBoundingClientRect();
 
 const x=e.clientX-rect.left;
@@ -530,15 +779,27 @@ const rotateX=((y/rect.height)-0.5)*-8;
 
 card.style.transform=
 `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-
 });
 
 card.addEventListener("mouseleave",()=>{
 card.style.transform="";
 });
-
 });
 
+const menuBtn=document.getElementById("menuBtn");
+const menu=document.getElementById("menu");
+
+menuBtn.addEventListener("click",()=>{
+menu.classList.toggle("active");
+menuBtn.textContent=menu.classList.contains("active") ? "×" : "☰";
+});
+
+document.querySelectorAll("nav a").forEach(link=>{
+link.addEventListener("click",()=>{
+menu.classList.remove("active");
+menuBtn.textContent="☰";
+});
+});
 </script>
 
 </body>
