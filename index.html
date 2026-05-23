@@ -18,26 +18,79 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
-  background: #f5f5f7;
-  color: #1d1d1f;
+  background: #02040a;
+  color: #f5f7fb;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(37,99,235,.35), transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(245,158,11,.16), transparent 28%),
+    linear-gradient(180deg, #02040a 0%, #050814 45%, #000 100%);
+  z-index: -3;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: radial-gradient(circle at center, black, transparent 70%);
+  z-index: -2;
+}
+
+.orb {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,.35), transparent 65%);
+  filter: blur(30px);
+  animation: float 9s ease-in-out infinite;
+  z-index: -1;
+}
+
+.orb.one {
+  top: 8%;
+  left: 12%;
+}
+
+.orb.two {
+  right: 4%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(245,158,11,.22), transparent 65%);
+  animation-delay: -3s;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-35px) scale(1.08); }
 }
 
 nav {
   position: fixed;
-  top: 0;
-  width: 100%;
-  height: 58px;
-  backdrop-filter: blur(24px);
-  background: rgba(245,245,247,.75);
-  border-bottom: 1px solid rgba(0,0,0,.06);
-  z-index: 1000;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1180px, calc(100% - 32px));
+  height: 64px;
+  border-radius: 999px;
+  background: rgba(6,10,22,.58);
+  border: 1px solid rgba(255,255,255,.09);
+  backdrop-filter: blur(28px);
+  z-index: 999;
+  box-shadow: 0 20px 70px rgba(0,0,0,.35);
 }
 
 .nav-inner {
-  max-width: 1200px;
   height: 100%;
-  margin: auto;
   padding: 0 24px;
   display: flex;
   align-items: center;
@@ -45,72 +98,83 @@ nav {
 }
 
 .logo {
+  font-size: 23px;
   font-weight: 800;
-  font-size: 22px;
+  letter-spacing: -.5px;
+}
+
+.logo span {
+  color: #f59e0b;
 }
 
 nav ul {
+  list-style: none;
   display: flex;
   gap: 28px;
-  list-style: none;
 }
 
 nav a {
-  color: #1d1d1f;
+  color: rgba(255,255,255,.72);
   text-decoration: none;
   font-size: 14px;
-  opacity: .75;
 }
 
 nav a:hover {
-  opacity: 1;
+  color: white;
 }
 
 .hero {
   min-height: 100vh;
-  padding: 130px 24px 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 150px 24px 80px;
+  display: grid;
+  place-items: center;
   text-align: center;
-  background:
-    radial-gradient(circle at top, #dbeafe 0%, transparent 35%),
-    linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
 }
 
-.hero-content {
-  max-width: 980px;
-}
-
-.device-badge {
+.badge {
   display: inline-flex;
-  padding: 10px 18px;
+  gap: 8px;
+  align-items: center;
+  padding: 11px 18px;
   border-radius: 999px;
-  background: rgba(0,0,0,.06);
-  font-size: 14px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.8);
   font-weight: 600;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
+  animation: fadeUp .9s ease both;
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  box-shadow: 0 0 22px #f59e0b;
 }
 
 .hero h1 {
-  font-size: clamp(52px, 9vw, 118px);
-  line-height: .92;
-  letter-spacing: -5px;
-  margin-bottom: 26px;
+  max-width: 1050px;
+  margin: auto;
+  font-size: clamp(58px, 10vw, 132px);
+  line-height: .88;
+  letter-spacing: -6px;
+  animation: fadeUp 1s ease .08s both;
 }
 
 .hero h1 span {
-  background: linear-gradient(90deg, #007aff, #5856d6, #00c7be);
+  background: linear-gradient(90deg, #fff, #93c5fd, #fbbf24);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .hero p {
   max-width: 720px;
-  margin: 0 auto 36px;
-  font-size: clamp(20px, 3vw, 28px);
-  line-height: 1.35;
-  color: #6e6e73;
+  margin: 34px auto 38px;
+  font-size: clamp(20px, 3vw, 27px);
+  line-height: 1.45;
+  color: rgba(230,238,255,.68);
+  animation: fadeUp 1s ease .16s both;
 }
 
 .buttons {
@@ -118,67 +182,112 @@ nav a:hover {
   justify-content: center;
   gap: 14px;
   flex-wrap: wrap;
+  animation: fadeUp 1s ease .24s both;
 }
 
 .btn {
-  padding: 15px 28px;
+  padding: 16px 28px;
   border-radius: 999px;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
   transition: .25s;
 }
 
 .primary {
-  background: #0071e3;
-  color: white;
+  background: white;
+  color: black;
+  box-shadow: 0 0 40px rgba(255,255,255,.22);
 }
 
 .secondary {
-  background: #e8e8ed;
-  color: #1d1d1f;
+  background: rgba(255,255,255,.07);
+  color: white;
+  border: 1px solid rgba(255,255,255,.1);
 }
 
 .btn:hover {
-  transform: scale(1.04);
+  transform: translateY(-4px) scale(1.03);
 }
 
-.device-showcase {
-  margin-top: 70px;
-  display: flex;
-  justify-content: center;
+.app-icon-wrap {
+  position: relative;
+  margin: 78px auto 0;
+  width: 280px;
+  height: 280px;
+  animation: iconFloat 5s ease-in-out infinite;
 }
 
-.mockup {
-  width: min(340px, 80vw);
-  aspect-ratio: 9 / 18;
-  border-radius: 46px;
-  background: #111;
-  padding: 12px;
-  box-shadow: 0 40px 90px rgba(0,0,0,.25);
+.app-glow {
+  position: absolute;
+  inset: -65px;
+  background: radial-gradient(circle, rgba(37,99,235,.55), transparent 62%);
+  filter: blur(25px);
+  animation: glowPulse 4s ease-in-out infinite;
 }
 
-.screen {
+.app-icon {
+  position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 36px;
+  border-radius: 62px;
   background:
-    linear-gradient(180deg, #0f172a, #111827),
-    radial-gradient(circle at top, #3b82f6, transparent 40%);
-  padding: 26px;
-  color: white;
-  text-align: left;
+    radial-gradient(circle at 50% 25%, rgba(80,120,180,.28), transparent 35%),
+    linear-gradient(145deg, #111827, #030712 55%, #000);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 40px 120px rgba(0,0,0,.75);
+  display: grid;
+  place-items: center;
 }
 
-.screen h3 {
-  font-size: 30px;
-  margin-bottom: 18px;
+.n-symbol {
+  position: relative;
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  border: 5px solid rgba(205,220,255,.85);
+  border-right-color: transparent;
+  box-shadow: 0 0 28px rgba(147,197,253,.25);
 }
 
-.widget {
-  padding: 18px;
-  border-radius: 24px;
-  background: rgba(255,255,255,.12);
-  margin-bottom: 14px;
+.n-symbol::before {
+  content: "N";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 95px;
+  font-weight: 700;
+  color: #dbeafe;
+  text-shadow: 0 0 18px rgba(147,197,253,.55);
+}
+
+.n-symbol::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 26px;
+  width: 16px;
+  height: 16px;
+  background: #f59e0b;
+  border-radius: 50%;
+  box-shadow: 0 0 22px #f59e0b;
+}
+
+@keyframes iconFloat {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(.7deg); }
+}
+
+@keyframes glowPulse {
+  0%,100% { opacity: .65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(34px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .section {
@@ -186,21 +295,22 @@ nav a:hover {
 }
 
 .section-title {
-  max-width: 760px;
+  max-width: 780px;
   margin: 0 auto 70px;
   text-align: center;
 }
 
 .section-title h2 {
-  font-size: clamp(42px, 7vw, 76px);
-  letter-spacing: -3px;
-  margin-bottom: 18px;
+  font-size: clamp(42px, 7vw, 84px);
+  line-height: .95;
+  letter-spacing: -4px;
+  margin-bottom: 22px;
 }
 
 .section-title p {
   font-size: 22px;
-  color: #6e6e73;
-  line-height: 1.5;
+  line-height: 1.55;
+  color: rgba(230,238,255,.62);
 }
 
 .features {
@@ -208,20 +318,41 @@ nav a:hover {
   margin: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  gap: 20px;
 }
 
 .card {
-  background: white;
+  position: relative;
   padding: 34px;
+  min-height: 280px;
   border-radius: 34px;
-  min-height: 260px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.06);
-  transition: .25s;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+  border: 1px solid rgba(255,255,255,.09);
+  backdrop-filter: blur(22px);
+  overflow: hidden;
+  transition: .35s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(circle at top left, rgba(59,130,246,.25), transparent 45%);
+  opacity: 0;
+  transition: .35s;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-10px);
+  border-color: rgba(255,255,255,.18);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card > * {
+  position: relative;
 }
 
 .icon {
@@ -230,138 +361,189 @@ nav a:hover {
 }
 
 .card h3 {
-  font-size: 27px;
+  font-size: 29px;
   margin-bottom: 12px;
 }
 
 .card p {
-  color: #6e6e73;
-  line-height: 1.6;
+  color: rgba(230,238,255,.62);
+  line-height: 1.65;
 }
 
-.big-section {
+.showcase {
   max-width: 1180px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr .9fr;
   gap: 24px;
 }
 
-.big-card {
-  min-height: 560px;
-  border-radius: 42px;
-  padding: 44px;
-  background: #000;
-  color: white;
-  overflow: hidden;
+.panel {
+  min-height: 620px;
+  border-radius: 46px;
+  padding: 46px;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(37,99,235,.25), transparent 35%),
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+  border: 1px solid rgba(255,255,255,.09);
   position: relative;
+  overflow: hidden;
 }
 
-.big-card.light {
-  background: white;
-  color: #1d1d1f;
+.panel h3 {
+  max-width: 520px;
+  font-size: clamp(42px, 6vw, 70px);
+  line-height: .93;
+  letter-spacing: -3px;
+  margin-bottom: 20px;
 }
 
-.big-card h3 {
-  font-size: clamp(38px, 5vw, 58px);
-  line-height: .96;
-  letter-spacing: -2px;
-  margin-bottom: 18px;
-}
-
-.big-card p {
-  color: #8e8e93;
+.panel p {
+  max-width: 470px;
   font-size: 21px;
-  line-height: 1.45;
+  line-height: 1.5;
+  color: rgba(230,238,255,.62);
 }
 
-.floating-ui {
+.dashboard {
   position: absolute;
-  bottom: 36px;
   left: 36px;
   right: 36px;
+  bottom: 36px;
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
-.pill {
-  padding: 18px 22px;
-  border-radius: 22px;
-  background: rgba(255,255,255,.12);
+.task {
+  padding: 20px 22px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.08);
   backdrop-filter: blur(18px);
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255,255,255,.86);
+  animation: slideSoft 5s ease-in-out infinite;
 }
 
-.light .pill {
-  background: #f5f5f7;
+.task:nth-child(2) { animation-delay: -1.4s; }
+.task:nth-child(3) { animation-delay: -2.8s; }
+
+@keyframes slideSoft {
+  0%,100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
 }
 
-.cta {
-  margin: 80px 24px 30px;
-  padding: 100px 24px;
-  border-radius: 44px;
-  background: linear-gradient(135deg, #007aff, #5856d6);
-  color: white;
+.device-section {
+  max-width: 1180px;
+  margin: auto;
+  padding: 80px 24px 0;
   text-align: center;
 }
 
+.device-box {
+  margin: auto;
+  max-width: 920px;
+  padding: 34px;
+  border-radius: 38px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.09);
+  backdrop-filter: blur(22px);
+}
+
+.device-box strong {
+  color: #fbbf24;
+}
+
+.cta {
+  margin: 100px 24px 40px;
+  padding: 110px 24px;
+  border-radius: 52px;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(59,130,246,.45), transparent 38%),
+    linear-gradient(145deg, #050814, #000);
+  border: 1px solid rgba(255,255,255,.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
 .cta h2 {
-  font-size: clamp(46px, 7vw, 86px);
-  letter-spacing: -4px;
-  line-height: .95;
-  margin-bottom: 20px;
+  font-size: clamp(48px, 8vw, 96px);
+  letter-spacing: -5px;
+  line-height: .92;
+  margin-bottom: 22px;
 }
 
 .cta p {
   font-size: 22px;
-  opacity: .85;
+  color: rgba(230,238,255,.64);
   margin-bottom: 34px;
 }
 
-.store-buttons {
-  display: flex;
-  justify-content: center;
+.appstore {
+  display: inline-flex;
+  align-items: center;
   gap: 14px;
-  flex-wrap: wrap;
+  padding: 16px 26px;
+  border-radius: 20px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-weight: 800;
+  transition: .25s;
 }
 
-.store {
-  background: rgba(255,255,255,.16);
-  color: white;
-  padding: 16px 24px;
-  border-radius: 18px;
-  min-width: 180px;
-  text-align: left;
-  backdrop-filter: blur(20px);
+.appstore:hover {
+  transform: translateY(-4px) scale(1.03);
 }
 
-.store small {
+.appstore small {
   display: block;
-  opacity: .7;
+  font-size: 12px;
+  opacity: .65;
+  text-align: left;
 }
 
-.store strong {
-  font-size: 22px;
+.appstore span {
+  display: block;
+  font-size: 23px;
 }
 
 footer {
-  padding: 36px 24px;
+  padding: 40px 24px;
   text-align: center;
-  color: #86868b;
+  color: rgba(255,255,255,.42);
 }
 
-@media (max-width: 1000px) {
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media(max-width: 1000px) {
   .features {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .big-section {
+  .showcase {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 700px) {
+@media(max-width: 700px) {
   nav ul {
     display: none;
+  }
+
+  .hero {
+    padding-top: 130px;
   }
 
   .hero h1 {
@@ -372,13 +554,42 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .section {
-    padding: 80px 20px;
+  .app-icon-wrap {
+    width: 220px;
+    height: 220px;
   }
 
-  .big-card {
-    min-height: 480px;
+  .app-icon {
+    border-radius: 48px;
+  }
+
+  .n-symbol {
+    width: 122px;
+    height: 122px;
+  }
+
+  .n-symbol::before {
+    font-size: 74px;
+  }
+
+  .panel {
+    min-height: 560px;
     padding: 32px;
+  }
+
+  .dashboard {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+
+  .section {
+    padding: 90px 20px;
+  }
+
+  .cta {
+    margin: 70px 16px 30px;
+    border-radius: 36px;
   }
 }
 </style>
@@ -386,9 +597,12 @@ footer {
 
 <body>
 
+<div class="orb one"></div>
+<div class="orb two"></div>
+
 <nav>
   <div class="nav-inner">
-    <div class="logo">NexDay</div>
+    <div class="logo">Nex<span>Day</span></div>
     <ul>
       <li><a href="#features">Features</a></li>
       <li><a href="#app">App</a></li>
@@ -398,108 +612,121 @@ footer {
 </nav>
 
 <section class="hero">
-  <div class="hero-content">
-    <div class="device-badge" id="deviceText">Gerät wird erkannt...</div>
+  <div>
+    <div class="badge">
+      <span class="pulse"></span>
+      <span id="deviceText">NexDay lädt...</span>
+    </div>
 
-    <h1>Dein Tag.<br><span>Perfekt organisiert.</span></h1>
+    <h1>
+      Plan smarter.<br>
+      <span>Live clearer.</span>
+    </h1>
 
     <p>
-      NexDay verbindet Aufgaben, Kalender, Einkauf und smarte Alltagstools
-      in einer modernen All-in-One App.
+      NexDay bringt Aufgaben, Kalender, Einkauf und Alltagstools
+      in ein ultra cleanes Premium-Erlebnis.
     </p>
 
     <div class="buttons">
-      <a href="#download" class="btn primary">Jetzt starten</a>
-      <a href="#features" class="btn secondary">Mehr erfahren</a>
+      <a href="#download" class="btn primary">App Store</a>
+      <a href="#features" class="btn secondary">Entdecken</a>
     </div>
 
-    <div class="device-showcase">
-      <div class="mockup" id="mockup">
-        <div class="screen">
-          <h3>NexDay</h3>
-          <div class="widget">✅ Aufgaben planen</div>
-          <div class="widget">📅 Kalender verwalten</div>
-          <div class="widget">🛒 Einkauf organisieren</div>
-        </div>
+    <div class="app-icon-wrap">
+      <div class="app-glow"></div>
+      <div class="app-icon">
+        <div class="n-symbol"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="features">
+<section class="section reveal" id="features">
   <div class="section-title">
-    <h2>Alles, was dein Alltag braucht.</h2>
-    <p>Intuitiv, schnell und schön gestaltet — inspiriert von moderner Apple-Ästhetik.</p>
+    <h2>Alles wirkt ruhiger.</h2>
+    <p>
+      Eine moderne App für Organisation, Fokus und Übersicht —
+      reduziert auf das, was wirklich zählt.
+    </p>
   </div>
 
   <div class="features">
     <div class="card">
       <div class="icon">✅</div>
       <h3>Aufgaben</h3>
-      <p>Plane To-dos, Prioritäten und Tagesziele übersichtlich an einem Ort.</p>
+      <p>Plane To-dos, Tagesziele und Routinen mit klarer Struktur.</p>
     </div>
 
     <div class="card">
       <div class="icon">📅</div>
       <h3>Kalender</h3>
-      <p>Behalte Termine, Routinen und wichtige Tage jederzeit im Blick.</p>
+      <p>Alle Termine und wichtigen Tage elegant an einem Ort.</p>
     </div>
 
     <div class="card">
       <div class="icon">🛒</div>
       <h3>NexShop</h3>
-      <p>Erstelle Einkaufslisten mit Kategorien, Mengen und Produkten.</p>
+      <p>Intuitive Einkaufslisten mit Produkten, Mengen und Kategorien.</p>
     </div>
 
     <div class="card">
       <div class="icon">⚡</div>
       <h3>Tools</h3>
-      <p>Schnelle Alltagshelfer für mehr Ruhe, Struktur und Produktivität.</p>
+      <p>Smarte Alltagshilfen für mehr Fokus, Tempo und Ruhe.</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="app">
-  <div class="big-section">
-    <div class="big-card">
-      <h3>Smarter planen.</h3>
-      <p>Deine Aufgaben, Termine und Routinen greifen nahtlos ineinander.</p>
+<section class="section reveal" id="app">
+  <div class="showcase">
+    <div class="panel">
+      <h3>Dein Tag. In einem Flow.</h3>
+      <p>
+        NexDay verbindet Planung und Alltag zu einer einzigen klaren Oberfläche.
+      </p>
 
-      <div class="floating-ui">
-        <div class="pill">Heute: 5 Aufgaben</div>
-        <div class="pill">Nächster Termin: 14:30 Uhr</div>
-        <div class="pill">Einkaufsliste bereit</div>
+      <div class="dashboard">
+        <div class="task"><span>Heute planen</span><strong>09:00</strong></div>
+        <div class="task"><span>Einkaufen</span><strong>NexShop</strong></div>
+        <div class="task"><span>Kalender prüfen</span><strong>14:30</strong></div>
       </div>
     </div>
 
-    <div class="big-card light">
-      <h3>Einfach einkaufen.</h3>
-      <p>Mit NexShop planst du Produkte, Mengen und Listen schneller.</p>
+    <div class="panel">
+      <h3>Premium Dark UI.</h3>
+      <p>
+        Inspiriert von deinem NexDay Screen: tiefes Schwarz, blauer Glow und ein warmer Akzent.
+      </p>
 
-      <div class="floating-ui">
-        <div class="pill">Milch · 2 Stück</div>
-        <div class="pill">Äpfel · Obst</div>
-        <div class="pill">Brot · Bäckerei</div>
+      <div class="dashboard">
+        <div class="task"><span>Dark Mode</span><strong>Aktiv</strong></div>
+        <div class="task"><span>Sync</span><strong>Schnell</strong></div>
+        <div class="task"><span>Fokus</span><strong>Klar</strong></div>
       </div>
+    </div>
+  </div>
+
+  <div class="device-section">
+    <div class="device-box">
+      <p id="deviceInfo">
+        Diese Homepage erkennt automatisch, ob du mit <strong>iPhone</strong>,
+        <strong>iPad</strong> oder <strong>Laptop/PC</strong> unterwegs bist.
+      </p>
     </div>
   </div>
 </section>
 
-<section class="cta" id="download">
-  <h2>Bereit für NexDay?</h2>
-  <p>Organisiere deinen nächsten Tag einfacher, schöner und smarter.</p>
+<section class="cta reveal" id="download">
+  <h2>Bereit für deinen nächsten Tag?</h2>
+  <p>NexDay bringt Ordnung, Ruhe und Übersicht in deinen Alltag.</p>
 
-  <div class="store-buttons">
-    <div class="store">
+  <a href="#" class="appstore">
+    <div>
       <small>Laden im</small>
-      <strong>App Store</strong>
+      <span>App Store</span>
     </div>
-
-    <div class="store">
-      <small>Jetzt bei</small>
-      <strong>Google Play</strong>
-    </div>
-  </div>
+  </a>
 </section>
 
 <footer>
@@ -509,39 +736,52 @@ footer {
 <script>
 function detectDevice() {
   const ua = navigator.userAgent.toLowerCase();
-  const width = window.innerWidth;
-  const deviceText = document.getElementById("deviceText");
-  const mockup = document.getElementById("mockup");
-
-  const isIpad =
-    ua.includes("ipad") ||
+  const isIphone = ua.includes("iphone");
+  const isIpad = ua.includes("ipad") || 
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
-  const isIphone = ua.includes("iphone");
+  const deviceText = document.getElementById("deviceText");
+  const deviceInfo = document.getElementById("deviceInfo");
 
   if (isIphone) {
     deviceText.textContent = "Optimiert für dein iPhone";
-    mockup.style.width = "300px";
-    mockup.style.aspectRatio = "9 / 18";
+    deviceInfo.innerHTML = "Du bist mit einem <strong>iPhone</strong> unterwegs. NexDay ist für schnelle mobile Organisation optimiert.";
   } else if (isIpad) {
     deviceText.textContent = "Optimiert für dein iPad";
-    mockup.style.width = "520px";
-    mockup.style.aspectRatio = "4 / 3";
-    mockup.style.borderRadius = "36px";
+    deviceInfo.innerHTML = "Du bist mit einem <strong>iPad</strong> unterwegs. NexDay nutzt mehr Fläche für bessere Übersicht.";
   } else {
     deviceText.textContent = "Optimiert für Laptop & PC";
-    mockup.style.width = "680px";
-    mockup.style.aspectRatio = "16 / 10";
-    mockup.style.borderRadius = "30px";
-  }
-
-  if (width < 700) {
-    mockup.style.width = "82vw";
+    deviceInfo.innerHTML = "Du bist mit einem <strong>Laptop oder PC</strong> unterwegs. Die Homepage zeigt dir die breite Premium-Ansicht.";
   }
 }
 
+function revealOnScroll() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (top < windowHeight - 120) {
+      el.classList.add("active");
+    }
+  });
+}
+
+function parallaxHero() {
+  const icon = document.querySelector(".app-icon-wrap");
+  const y = window.scrollY;
+  icon.style.transform = `translateY(${y * 0.08}px)`;
+}
+
 detectDevice();
+revealOnScroll();
+
 window.addEventListener("resize", detectDevice);
+window.addEventListener("scroll", () => {
+  revealOnScroll();
+  parallaxHero();
+});
 </script>
 
 </body>
