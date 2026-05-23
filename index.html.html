@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexDay Ultra</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif;
+background:#02040a;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,rgba(59,130,246,.22),transparent 40%),
+linear-gradient(180deg,#02040a,#050814 55%,#000);
+z-index:-3;
+}
+
+nav{
+position:fixed;
+top:18px;
+left:50%;
+transform:translateX(-50%);
+width:min(1200px,calc(100% - 30px));
+height:72px;
+background:rgba(10,14,24,.55);
+backdrop-filter:blur(24px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:999px;
+z-index:999;
+}
+
+.nav-inner{
+height:100%;
+padding:0 28px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:32px;
+font-weight:850;
+letter-spacing:-1px;
+}
+
+.logo span{
+color:#f5b041;
+}
+
+nav ul{
+display:flex;
+gap:26px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:rgba(255,255,255,.68);
+font-size:14px;
+transition:.3s;
+}
+
+nav a:hover{
+color:white;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:160px 24px 100px;
+}
+
+.badge{
+padding:12px 18px;
+border-radius:999px;
+background:rgba(255,255,255,.07);
+border:1px solid rgba(255,255,255,.08);
+margin-bottom:34px;
+font-weight:700;
+backdrop-filter:blur(20px);
+animation:fadeUp 1s ease;
+}
+
+.hero h1{
+font-size:clamp(58px,10vw,140px);
+line-height:.88;
+letter-spacing:-6px;
+max-width:1100px;
+animation:fadeUp 1s ease .1s both;
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,#fff,#7fb7ff,#f5b041);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+max-width:760px;
+margin:34px auto;
+font-size:clamp(19px,2vw,26px);
+line-height:1.5;
+color:rgba(255,255,255,.65);
+animation:fadeUp 1s ease .2s both;
+}
+
+.buttons{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+justify-content:center;
+margin-bottom:70px;
+animation:fadeUp 1s ease .3s both;
+}
+
+.btn{
+padding:17px 28px;
+border-radius:999px;
+font-weight:800;
+text-decoration:none;
+transition:.35s;
+}
+
+.primary{
+background:white;
+color:black;
+}
+
+.secondary{
+background:rgba(255,255,255,.08);
+color:white;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.03);
+}
+
+.hero-device{
+width:min(1100px,100%);
+padding:22px;
+border-radius:42px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(30px);
+box-shadow:0 40px 120px rgba(0,0,0,.6);
+animation:float 7s ease-in-out infinite;
+}
+
+.hero-device img{
+width:100%;
+border-radius:26px;
+display:block;
+}
+
+.section{
+padding:120px 24px;
+}
+
+.section-title{
+text-align:center;
+max-width:850px;
+margin:0 auto 70px;
+}
+
+.eyebrow{
+font-size:13px;
+letter-spacing:.08em;
+text-transform:uppercase;
+font-weight:800;
+color:#f5b041;
+margin-bottom:18px;
+}
+
+.section-title h2{
+font-size:clamp(42px,7vw,90px);
+line-height:.92;
+letter-spacing:-4px;
+margin-bottom:24px;
+}
+
+.section-title p{
+font-size:22px;
+line-height:1.6;
+color:rgba(255,255,255,.62);
+}
+
+.showcase{
+max-width:1300px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+}
+
+.card{
+position:relative;
+overflow:hidden;
+border-radius:42px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:26px;
+backdrop-filter:blur(20px);
+transition:.45s;
+transform-style:preserve-3d;
+}
+
+.card:hover{
+transform:translateY(-10px) rotateX(2deg) rotateY(-2deg);
+box-shadow:0 30px 90px rgba(0,0,0,.45);
+}
+
+.card img{
+width:100%;
+display:block;
+border-radius:26px;
+margin-top:22px;
+}
+
+.card h3{
+font-size:34px;
+margin-bottom:12px;
+letter-spacing:-1px;
+}
+
+.card p{
+font-size:18px;
+line-height:1.6;
+color:rgba(255,255,255,.62);
+}
+
+.large{
+grid-column:span 2;
+}
+
+.footer{
+padding:60px 24px;
+text-align:center;
+color:rgba(255,255,255,.4);
+}
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1.1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.glow{
+position:absolute;
+width:320px;
+height:320px;
+border-radius:50%;
+background:rgba(59,130,246,.2);
+filter:blur(70px);
+top:-100px;
+right:-100px;
+pointer-events:none;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-16px);
+}
+}
+
+@media(max-width:950px){
+
+.showcase{
+grid-template-columns:1fr;
+}
+
+.large{
+grid-column:span 1;
+}
+
+.hero h1{
+letter-spacing:-3px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<div class="logo">Nex<span>Day</span></div>
+
+<ul>
+<li><a href="#homeview">HomeView</a></li>
+<li><a href="#aufgaben">Aufgaben</a></li>
+<li><a href="#kalender">Kalender</a></li>
+<li><a href="#nexshop">NexShop</a></li>
+<li><a href="#notizen">Notizen</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="badge"> Designed for modern daily organization</div>
+
+<h1>Dein Alltag.<br><span>Neu organisiert.</span></h1>
+
+<p>
+Kalender. Aufgaben. Einkauf. Meal Planning. Notizen.
+Alles in einer einzigen Premium Experience.
+</p>
+
+<div class="buttons">
+<a href="#" class="btn primary">App Store</a>
+<a href="#homeview" class="btn secondary">Entdecken</a>
+</div>
+
+<div class="hero-device">
+<img src="IMG_1263.jpeg" alt="NexDay HomeView">
+</div>
+</section>
+
+<section class="section reveal" id="homeview">
+
+<div class="section-title">
+<div class="eyebrow">HomeView</div>
+<h2>Alles wichtige sofort sichtbar.</h2>
+<p>
+Dein zentrales Dashboard verbindet Aufgaben,
+Kalender, Einkaufslisten und Tagesplanung in einer modernen Übersicht.
+</p>
+</div>
+
+<div class="showcase">
+
+<div class="card large">
+<div class="glow"></div>
+<h3>HomeView</h3>
+<p>
+Die komplette NexDay Experience in einem intelligenten Startscreen.
+</p>
+<img src="IMG_1263.jpeg" alt="">
+</div>
+
+</div>
+</section>
+
+<section class="section reveal" id="aufgaben">
+
+<div class="section-title">
+<div class="eyebrow">Aufgaben</div>
+<h2>Fokus der mitdenkt.</h2>
+<p>
+Prioritäten, Tagesstruktur und intelligente Organisation
+für einen produktiveren Alltag.
+</p>
+</div>
+
+<div class="showcase">
+
+<div class="card">
+<h3>Aufgaben</h3>
+<p>Plane deinen Tag smarter mit klaren Prioritäten.</p>
+<img src="IMG_1264.jpeg" alt="">
+</div>
+
+<div class="card">
+<h3>Realtime Fortschritt</h3>
+<p>Alle Änderungen synchronisieren sich sofort auf allen Geräten.</p>
+<img src="IMG_1264.jpeg" alt="">
+</div>
+
+</div>
+</section>
+
+<section class="section reveal" id="kalender">
+
+<div class="section-title">
+<div class="eyebrow">Kalender</div>
+<h2>Dein Tag perfekt organisiert.</h2>
+<p>
+Geburtstage, Termine, Erinnerungen und Tagesplanung
+in einer ruhigen modernen UI.
+</p>
+</div>
+
+<div class="showcase">
+
+<div class="card">
+<h3>Kalender Übersicht</h3>
+<p>Elegant und schnell optimiert für iPhone und iPad.</p>
+<img src="IMG_1265.jpeg" alt="">
+</div>
+
+<div class="card">
+<h3>Smart Events</h3>
+<p>Automatische Geburtstage und intelligente Tagesplanung.</p>
+<img src="IMG_1266.jpeg" alt="">
+</div>
+
+</div>
+</section>
+
+<section class="section reveal" id="nexshop">
+
+<div class="section-title">
+<div class="eyebrow">NexShop</div>
+<h2>Gemeinsam einkaufen in Echtzeit.</h2>
+<p>
+Live synchronisierte Einkaufslisten,
+Meal Planning und Kochmodus in einer Experience.
+</p>
+</div>
+
+<div class="showcase">
+
+<div class="card">
+<h3>NexShop</h3>
+<p>Gemeinsame Einkaufslisten mit Live Sync.</p>
+<img src="IMG_1267.jpeg" alt="">
+</div>
+
+<div class="card">
+<h3>Gerichte</h3>
+<p>Rezepte und Zutaten direkt mit NexShop verbunden.</p>
+<img src="IMG_1268.jpeg" alt="">
+</div>
+
+<div class="card large">
+<h3>Kochmodus</h3>
+<p>Minimalistisch, fokussiert und perfekt beim Kochen.</p>
+<img src="IMG_1269.jpeg" alt="">
+</div>
+
+</div>
+</section>
+
+<section class="section reveal" id="notizen">
+
+<div class="section-title">
+<div class="eyebrow">Notizen</div>
+<h2>Gedanken sofort festhalten.</h2>
+<p>
+Moderne Realtime Notizen mit Premium UI und smarter Struktur.
+</p>
+</div>
+
+<div class="showcase">
+
+<div class="card large">
+<h3>Notizen</h3>
+<p>Alles an einem Ort organisiert.</p>
+<img src="IMG_1270.jpeg" alt="">
+</div>
+
+</div>
+</section>
+
+<div class="footer">
+© 2026 NexDay — Designed with Apple-like Motion & UI
+</div>
+
+<script>
+
+const reveals=document.querySelectorAll(".reveal");
+
+function reveal(){
+reveals.forEach(el=>{
+const top=el.getBoundingClientRect().top;
+
+if(top<window.innerHeight-120){
+el.classList.add("active");
+}
+});
+}
+
+window.addEventListener("scroll",reveal);
+reveal();
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+const rotateY=((x/rect.width)-0.5)*8;
+const rotateX=((y/rect.height)-0.5)*-8;
+
+card.style.transform=
+`perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="";
+});
+
+});
+
+</script>
+
+</body>
+</html>
