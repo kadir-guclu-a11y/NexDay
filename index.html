@@ -1,403 +1,385 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>NexDay</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
-background:#050816;
-color:white;
-overflow-x:hidden;
+html {
+  scroll-behavior: smooth;
 }
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at top left,#1d4ed8 0%,transparent 35%),
-radial-gradient(circle at bottom right,#14b8a6 0%,transparent 35%),
-radial-gradient(circle at center,#6d28d9 0%,transparent 40%);
-opacity:.45;
-z-index:-1;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  overflow-x: hidden;
 }
 
-nav{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-width:90%;
-max-width:1200px;
-padding:18px 28px;
-border-radius:999px;
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.08);
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:100;
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 58px;
+  backdrop-filter: blur(24px);
+  background: rgba(245,245,247,.75);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  z-index: 1000;
 }
 
-nav h2{
-font-size:28px;
-font-weight:800;
+.nav-inner {
+  max-width: 1200px;
+  height: 100%;
+  margin: auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-nav ul{
-display:flex;
-gap:24px;
-list-style:none;
+.logo {
+  font-weight: 800;
+  font-size: 22px;
 }
 
-nav a{
-text-decoration:none;
-color:#dbe4ff;
-font-size:15px;
+nav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
 }
 
-.hero{
-min-height:100vh;
-padding:140px 8% 80px;
-display:grid;
-grid-template-columns:1fr 1fr;
-align-items:center;
-gap:60px;
+nav a {
+  color: #1d1d1f;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: .75;
 }
 
-.hero h1{
-font-size:clamp(60px,8vw,110px);
-line-height:.9;
-letter-spacing:-4px;
-margin-bottom:24px;
+nav a:hover {
+  opacity: 1;
 }
 
-.hero h1 span{
-background:linear-gradient(90deg,#fff,#60a5fa,#5eead4);
--webkit-background-clip:text;
-color:transparent;
+.hero {
+  min-height: 100vh;
+  padding: 130px 24px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, #dbeafe 0%, transparent 35%),
+    linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
 }
 
-.hero p{
-font-size:22px;
-line-height:1.6;
-color:#b8c4e0;
-max-width:620px;
-margin-bottom:34px;
+.hero-content {
+  max-width: 980px;
 }
 
-.buttons{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
+.device-badge {
+  display: inline-flex;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.06);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 28px;
 }
 
-.btn{
-padding:16px 28px;
-border-radius:999px;
-font-weight:700;
-text-decoration:none;
-transition:.3s;
+.hero h1 {
+  font-size: clamp(52px, 9vw, 118px);
+  line-height: .92;
+  letter-spacing: -5px;
+  margin-bottom: 26px;
 }
 
-.primary{
-background:white;
-color:black;
+.hero h1 span {
+  background: linear-gradient(90deg, #007aff, #5856d6, #00c7be);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.secondary{
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.1);
-color:white;
+.hero p {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.35;
+  color: #6e6e73;
 }
 
-.btn:hover{
-transform:translateY(-3px);
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
-.phone-area{
-position:relative;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:700px;
+.btn {
+  padding: 15px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: .25s;
 }
 
-.phone{
-position:absolute;
-width:320px;
-border-radius:42px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.15);
-box-shadow:0 30px 90px rgba(0,0,0,.5);
+.primary {
+  background: #0071e3;
+  color: white;
 }
 
-.phone img{
-width:100%;
-display:block;
+.secondary {
+  background: #e8e8ed;
+  color: #1d1d1f;
 }
 
-.phone.left{
-width:220px;
-left:0;
-transform:rotate(-12deg);
-opacity:.85;
+.btn:hover {
+  transform: scale(1.04);
 }
 
-.phone.right{
-width:220px;
-right:0;
-transform:rotate(12deg);
-opacity:.85;
+.device-showcase {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
 }
 
-.section{
-padding:120px 8%;
+.mockup {
+  width: min(340px, 80vw);
+  aspect-ratio: 9 / 18;
+  border-radius: 46px;
+  background: #111;
+  padding: 12px;
+  box-shadow: 0 40px 90px rgba(0,0,0,.25);
 }
 
-.section-title{
-text-align:center;
-margin-bottom:70px;
+.screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+  background:
+    linear-gradient(180deg, #0f172a, #111827),
+    radial-gradient(circle at top, #3b82f6, transparent 40%);
+  padding: 26px;
+  color: white;
+  text-align: left;
 }
 
-.section-title h2{
-font-size:clamp(42px,6vw,80px);
-letter-spacing:-3px;
-margin-bottom:20px;
+.screen h3 {
+  font-size: 30px;
+  margin-bottom: 18px;
 }
 
-.section-title p{
-font-size:22px;
-color:#aeb9d6;
-max-width:700px;
-margin:auto;
-line-height:1.6;
+.widget {
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255,255,255,.12);
+  margin-bottom: 14px;
 }
 
-.features{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
+.section {
+  padding: 120px 24px;
 }
 
-.card{
-padding:34px;
-border-radius:34px;
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(16px);
+.section-title {
+  max-width: 760px;
+  margin: 0 auto 70px;
+  text-align: center;
 }
 
-.card h3{
-font-size:30px;
-margin:22px 0 14px;
+.section-title h2 {
+  font-size: clamp(42px, 7vw, 76px);
+  letter-spacing: -3px;
+  margin-bottom: 18px;
 }
 
-.card p{
-color:#b8c4e0;
-line-height:1.7;
+.section-title p {
+  font-size: 22px;
+  color: #6e6e73;
+  line-height: 1.5;
 }
 
-.icon{
-font-size:42px;
+.features {
+  max-width: 1180px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
 }
 
-.showcase{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:24px;
+.card {
+  background: white;
+  padding: 34px;
+  border-radius: 34px;
+  min-height: 260px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.06);
+  transition: .25s;
 }
 
-.big{
-min-height:580px;
-padding:40px;
-border-radius:42px;
-position:relative;
-overflow:hidden;
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.08);
+.card:hover {
+  transform: translateY(-6px);
 }
 
-.big h3{
-font-size:52px;
-line-height:1;
-margin-bottom:20px;
-letter-spacing:-2px;
+.icon {
+  font-size: 42px;
+  margin-bottom: 24px;
 }
 
-.big p{
-font-size:20px;
-color:#c7d1eb;
-max-width:420px;
-line-height:1.6;
+.card h3 {
+  font-size: 27px;
+  margin-bottom: 12px;
 }
 
-.big img{
-position:absolute;
-bottom:-60px;
-left:50%;
-transform:translateX(-50%);
-width:280px;
-border-radius:38px;
-box-shadow:0 20px 60px rgba(0,0,0,.45);
+.card p {
+  color: #6e6e73;
+  line-height: 1.6;
 }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:22px;
+.big-section {
+  max-width: 1180px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
 }
 
-.gallery img{
-width:100%;
-border-radius:34px;
-box-shadow:0 20px 60px rgba(0,0,0,.45);
+.big-card {
+  min-height: 560px;
+  border-radius: 42px;
+  padding: 44px;
+  background: #000;
+  color: white;
+  overflow: hidden;
+  position: relative;
 }
 
-.cta{
-margin:80px 8%;
-padding:100px 30px;
-border-radius:50px;
-background:white;
-color:black;
-text-align:center;
+.big-card.light {
+  background: white;
+  color: #1d1d1f;
 }
 
-.cta h2{
-font-size:clamp(50px,7vw,90px);
-line-height:.95;
-letter-spacing:-4px;
-margin-bottom:20px;
+.big-card h3 {
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: .96;
+  letter-spacing: -2px;
+  margin-bottom: 18px;
 }
 
-.cta p{
-font-size:22px;
-color:#555;
-margin-bottom:34px;
+.big-card p {
+  color: #8e8e93;
+  font-size: 21px;
+  line-height: 1.45;
 }
 
-.store-buttons{
-display:flex;
-justify-content:center;
-gap:14px;
-flex-wrap:wrap;
+.floating-ui {
+  position: absolute;
+  bottom: 36px;
+  left: 36px;
+  right: 36px;
+  display: grid;
+  gap: 14px;
 }
 
-.store{
-background:black;
-color:white;
-padding:16px 22px;
-border-radius:18px;
-min-width:180px;
-text-align:left;
+.pill {
+  padding: 18px 22px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(18px);
 }
 
-.store small{
-display:block;
-opacity:.7;
-font-size:12px;
+.light .pill {
+  background: #f5f5f7;
 }
 
-.store strong{
-font-size:22px;
+.cta {
+  margin: 80px 24px 30px;
+  padding: 100px 24px;
+  border-radius: 44px;
+  background: linear-gradient(135deg, #007aff, #5856d6);
+  color: white;
+  text-align: center;
 }
 
-footer{
-padding:40px 8%;
-display:flex;
-justify-content:space-between;
-color:#9aa7c7;
-border-top:1px solid rgba(255,255,255,.08);
+.cta h2 {
+  font-size: clamp(46px, 7vw, 86px);
+  letter-spacing: -4px;
+  line-height: .95;
+  margin-bottom: 20px;
 }
 
-@media(max-width:1000px){
-
-.hero{
-grid-template-columns:1fr;
-text-align:center;
+.cta p {
+  font-size: 22px;
+  opacity: .85;
+  margin-bottom: 34px;
 }
 
-.hero p{
-margin:auto auto 34px;
+.store-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
-.buttons{
-justify-content:center;
+.store {
+  background: rgba(255,255,255,.16);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 18px;
+  min-width: 180px;
+  text-align: left;
+  backdrop-filter: blur(20px);
 }
 
-.features{
-grid-template-columns:repeat(2,1fr);
+.store small {
+  display: block;
+  opacity: .7;
 }
 
-.showcase{
-grid-template-columns:1fr;
+.store strong {
+  font-size: 22px;
 }
 
-.gallery{
-grid-template-columns:repeat(2,1fr);
+footer {
+  padding: 36px 24px;
+  text-align: center;
+  color: #86868b;
 }
 
+@media (max-width: 1000px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .big-section {
+    grid-template-columns: 1fr;
+  }
 }
 
-@media(max-width:700px){
+@media (max-width: 700px) {
+  nav ul {
+    display: none;
+  }
 
-nav ul{
-display:none;
-}
+  .hero h1 {
+    letter-spacing: -3px;
+  }
 
-.hero{
-padding:130px 24px 60px;
-}
+  .features {
+    grid-template-columns: 1fr;
+  }
 
-.section{
-padding:80px 24px;
-}
+  .section {
+    padding: 80px 20px;
+  }
 
-.features{
-grid-template-columns:1fr;
-}
-
-.gallery{
-grid-template-columns:1fr;
-}
-
-.phone-area{
-min-height:500px;
-}
-
-.phone{
-width:260px;
-}
-
-.phone.left,
-.phone.right{
-width:150px;
-}
-
-.big{
-min-height:520px;
-}
-
-.big img{
-width:220px;
-}
-
-footer{
-flex-direction:column;
-gap:10px;
-padding:30px 24px;
-}
-
+  .big-card {
+    min-height: 480px;
+    padding: 32px;
+  }
 }
 </style>
 </head>
@@ -405,166 +387,162 @@ padding:30px 24px;
 <body>
 
 <nav>
-<h2>NexDay</h2>
-
-<ul>
-<li><a href="#">Features</a></li>
-<li><a href="#">App</a></li>
-<li><a href="#">Download</a></li>
-</ul>
+  <div class="nav-inner">
+    <div class="logo">NexDay</div>
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#app">App</a></li>
+      <li><a href="#download">Download</a></li>
+    </ul>
+  </div>
 </nav>
 
 <section class="hero">
+  <div class="hero-content">
+    <div class="device-badge" id="deviceText">Gerät wird erkannt...</div>
 
-<div>
-<h1>Dein Alltag.<br><span>Neu organisiert.</span></h1>
+    <h1>Dein Tag.<br><span>Perfekt organisiert.</span></h1>
 
-<p>
-NexDay verbindet Aufgaben, Kalender,
-Einkauf und Alltagstools in einer modernen
-All-in-One App.
-</p>
+    <p>
+      NexDay verbindet Aufgaben, Kalender, Einkauf und smarte Alltagstools
+      in einer modernen All-in-One App.
+    </p>
 
-<div class="buttons">
-<a href="#" class="btn primary">Jetzt starten</a>
-<a href="#" class="btn secondary">App ansehen</a>
-</div>
-</div>
+    <div class="buttons">
+      <a href="#download" class="btn primary">Jetzt starten</a>
+      <a href="#features" class="btn secondary">Mehr erfahren</a>
+    </div>
 
-<div class="phone-area">
-
-<div class="phone left">
-<img src="DEIN_BILD_1">
-</div>
-
-<div class="phone">
-<img src="DEIN_BILD_2">
-</div>
-
-<div class="phone right">
-<img src="DEIN_BILD_3">
-</div>
-
-</div>
-
+    <div class="device-showcase">
+      <div class="mockup" id="mockup">
+        <div class="screen">
+          <h3>NexDay</h3>
+          <div class="widget">✅ Aufgaben planen</div>
+          <div class="widget">📅 Kalender verwalten</div>
+          <div class="widget">🛒 Einkauf organisieren</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section">
+<section class="section" id="features">
+  <div class="section-title">
+    <h2>Alles, was dein Alltag braucht.</h2>
+    <p>Intuitiv, schnell und schön gestaltet — inspiriert von moderner Apple-Ästhetik.</p>
+  </div>
 
-<div class="section-title">
-<h2>Alles für deinen Tag.</h2>
+  <div class="features">
+    <div class="card">
+      <div class="icon">✅</div>
+      <h3>Aufgaben</h3>
+      <p>Plane To-dos, Prioritäten und Tagesziele übersichtlich an einem Ort.</p>
+    </div>
 
-<p>
-Eine App für Aufgaben, Kalender,
-Einkauf und Organisation.
-</p>
-</div>
+    <div class="card">
+      <div class="icon">📅</div>
+      <h3>Kalender</h3>
+      <p>Behalte Termine, Routinen und wichtige Tage jederzeit im Blick.</p>
+    </div>
 
-<div class="features">
+    <div class="card">
+      <div class="icon">🛒</div>
+      <h3>NexShop</h3>
+      <p>Erstelle Einkaufslisten mit Kategorien, Mengen und Produkten.</p>
+    </div>
 
-<div class="card">
-<div class="icon">✅</div>
-<h3>Aufgaben</h3>
-<p>Plane To-dos und behalte deinen Fortschritt im Blick.</p>
-</div>
-
-<div class="card">
-<div class="icon">📅</div>
-<h3>Kalender</h3>
-<p>Alle Termine und Tage übersichtlich an einem Ort.</p>
-</div>
-
-<div class="card">
-<div class="icon">🛒</div>
-<h3>NexShop</h3>
-<p>Moderne Einkaufslisten mit Kategorien und Produkten.</p>
-</div>
-
-<div class="card">
-<div class="icon">⏱️</div>
-<h3>Tools</h3>
-<p>Aufgaben.Kalender immer bereit</p>
-</div>
-
-</div>
-
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Tools</h3>
+      <p>Schnelle Alltagshelfer für mehr Ruhe, Struktur und Produktivität.</p>
+    </div>
+  </div>
 </section>
 
-<section class="section">
+<section class="section" id="app">
+  <div class="big-section">
+    <div class="big-card">
+      <h3>Smarter planen.</h3>
+      <p>Deine Aufgaben, Termine und Routinen greifen nahtlos ineinander.</p>
 
-<div class="showcase">
+      <div class="floating-ui">
+        <div class="pill">Heute: 5 Aufgaben</div>
+        <div class="pill">Nächster Termin: 14:30 Uhr</div>
+        <div class="pill">Einkaufsliste bereit</div>
+      </div>
+    </div>
 
-<div class="big">
-<h3>Organisiere smarter.</h3>
+    <div class="big-card light">
+      <h3>Einfach einkaufen.</h3>
+      <p>Mit NexShop planst du Produkte, Mengen und Listen schneller.</p>
 
-<p>
-Mehr Übersicht. Weniger Chaos.
-Alles an einem Ort.
-</p>
-
-<img src="DEIN_BILD_4">
-</div>
-
-<div class="big">
-<h3>Einkaufen einfacher.</h3>
-
-<p>
-Mit NexShop planst du Produkte,
-Mengen und Listen schneller.
-</p>
-
-<img src="DEIN_BILD_5">
-</div>
-
-</div>
-
+      <div class="floating-ui">
+        <div class="pill">Milch · 2 Stück</div>
+        <div class="pill">Äpfel · Obst</div>
+        <div class="pill">Brot · Bäckerei</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section">
+<section class="cta" id="download">
+  <h2>Bereit für NexDay?</h2>
+  <p>Organisiere deinen nächsten Tag einfacher, schöner und smarter.</p>
 
-<div class="section-title">
-<h2>Moderne App Experience.</h2>
-</div>
+  <div class="store-buttons">
+    <div class="store">
+      <small>Laden im</small>
+      <strong>App Store</strong>
+    </div>
 
-<div class="gallery">
-
-<img src="DEIN_BILD_1">
-<img src="DEIN_BILD_2">
-<img src="DEIN_BILD_3">
-<img src="DEIN_BILD_4">
-
-</div>
-
-</section>
-
-<section class="cta">
-
-<h2>Bereit für deinen nächsten Tag?</h2>
-
-<p>
-NexDay bringt Ruhe, Übersicht und Organisation in deinen Alltag.
-</p>
-
-<div class="store-buttons">
-
-<div class="store">
-<small>Laden im</small>
-<strong>App Store</strong>
-</div>
-
-<div class="store">
-<small>Jetzt bei</small>
-<strong>Google Play</strong>
-</div>
-
-</div>
-
+    <div class="store">
+      <small>Jetzt bei</small>
+      <strong>Google Play</strong>
+    </div>
+  </div>
 </section>
 
 <footer>
-<strong>NexDay</strong>
-<span>© 2026 NexDay</span>
+  © 2026 NexDay. Alle Rechte vorbehalten.
 </footer>
+
+<script>
+function detectDevice() {
+  const ua = navigator.userAgent.toLowerCase();
+  const width = window.innerWidth;
+  const deviceText = document.getElementById("deviceText");
+  const mockup = document.getElementById("mockup");
+
+  const isIpad =
+    ua.includes("ipad") ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  const isIphone = ua.includes("iphone");
+
+  if (isIphone) {
+    deviceText.textContent = "Optimiert für dein iPhone";
+    mockup.style.width = "300px";
+    mockup.style.aspectRatio = "9 / 18";
+  } else if (isIpad) {
+    deviceText.textContent = "Optimiert für dein iPad";
+    mockup.style.width = "520px";
+    mockup.style.aspectRatio = "4 / 3";
+    mockup.style.borderRadius = "36px";
+  } else {
+    deviceText.textContent = "Optimiert für Laptop & PC";
+    mockup.style.width = "680px";
+    mockup.style.aspectRatio = "16 / 10";
+    mockup.style.borderRadius = "30px";
+  }
+
+  if (width < 700) {
+    mockup.style.width = "82vw";
+  }
+}
+
+detectDevice();
+window.addEventListener("resize", detectDevice);
+</script>
 
 </body>
 </html>
