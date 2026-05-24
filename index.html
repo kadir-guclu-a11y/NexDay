@@ -728,20 +728,21 @@ NexDay fühlt sich leicht, schnell und hochwertig an.
 </section>
 
 <section class="section reveal">
-<div class="cta">
-<h2>Bereit, deinen Alltag neu zu organisieren?</h2>
-<p>
-Starte bald mit NexDay und verbinde Aufgaben, Kalender, Einkauf, Rezepte und Notizen in einer einzigen App.
-</p>
+  <div class="cta">
+    <h2>Bereit, deinen Alltag neu zu organisieren?</h2>
+    <p>
+      Starte bald mit NexDay und verbinde Aufgaben, Kalender, Einkauf,
+      Rezepte und Notizen in einer einzigen App.
+    </p>
 
-<div class="buttons" style="margin-bottom:0;">
-<a href="#" class="btn primary">Bald im App Store</a>
-<a href="#homeview" class="btn secondary">Features ansehen</a>
-</div>
-</div>
+    <div class="buttons" style="margin-bottom:0;">
+      <a href="#" class="btn primary">Bald im App Store</a>
+      <a href="#homeview" class="btn secondary">Features ansehen</a>
+    </div>
+  </div>
 </section>
 
-<<section class="section reveal" id="trust">
+<section class="section reveal" id="trust">
   <div class="section-title">
     <div class="eyebrow">Datenschutz</div>
     <h2>Deine Daten bleiben geschützt.</h2>
@@ -780,3 +781,57 @@ Starte bald mit NexDay und verbinde Aufgaben, Kalender, Einkauf, Rezepte und Not
     <a href="mailto:support@getnexday.com">Kontakt</a>
   </div>
 </footer>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function reveal(){
+  reveals.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+
+    if(top < window.innerHeight - 120){
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", reveal);
+reveal();
+
+document.querySelectorAll(".card").forEach(card=>{
+  card.addEventListener("mousemove", e=>{
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateY = ((x / rect.width) - 0.5) * 8;
+    const rotateX = ((y / rect.height) - 0.5) * -8;
+
+    card.style.transform =
+    `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+  });
+
+  card.addEventListener("mouseleave", ()=>{
+    card.style.transform = "";
+  });
+});
+
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+
+menuBtn.addEventListener("click", ()=>{
+  menu.classList.toggle("active");
+  menuBtn.textContent = menu.classList.contains("active") ? "×" : "☰";
+});
+
+document.querySelectorAll("nav a").forEach(link=>{
+  link.addEventListener("click", ()=>{
+    menu.classList.remove("active");
+    menuBtn.textContent = "☰";
+  });
+});
+</script>
+
+</body>
+</html>
