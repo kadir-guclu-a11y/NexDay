@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "S3M9B39JHZ.com.kadir.NexDayClean"
+        ],
+        "components": [
+          {
+            "/": "/recipe/*"
+          }
+        ]
+      }
+    ]
+  }
+}
