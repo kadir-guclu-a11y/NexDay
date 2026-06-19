@@ -832,13 +832,14 @@ document.querySelectorAll("nav a").forEach(link=>{
     menuBtn.textContent = "☰";
   });
 });
-</script>
-
-</body>
-</html>
-const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
 const recipeCode = params.get("recipe");
 
 if (recipeCode) {
   window.location.href = "nexday://recipe/" + recipeCode;
 }
+</script>
+
+</body>
+</html>
+
